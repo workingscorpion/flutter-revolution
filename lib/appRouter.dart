@@ -1,5 +1,5 @@
 import 'package:btrips/constants/routeNames.dart';
-import 'package:btrips/pages/home.dart';
+import 'package:btrips/pages/home/home.dart';
 import 'package:btrips/pages/splash.dart';
 import 'package:btrips/store/navigationStore.dart';
 import 'package:flutter/material.dart';

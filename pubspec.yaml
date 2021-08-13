@@ -1,7 +1,7 @@
 name: btrips
 description: A new Flutter project.
 
-publish_to: 'none'
+publish_to: "none"
 
 version: 1.0.0+1
 
@@ -11,7 +11,6 @@ environment:
 dependencies:
   flutter:
     sdk: flutter
-
 
   dio: ^3.0.10
   dio_cookie_manager: ^1.0.0
@@ -27,6 +26,9 @@ dependencies:
   intl: ^0.16.1
   flutter_local_notifications: ^4.0.1+2
 
+  qr_flutter: ^3.2.0
+
+  fluttertoast: ^7.1.8
   flutter_svg: ^0.19.1
   cupertino_icons: ^1.0.0
 
