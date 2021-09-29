@@ -1,7 +1,7 @@
 import 'package:btrips/constants/customColors.dart';
-import 'package:btrips/pages/home/tab1.dart';
-import 'package:btrips/pages/home/tab2.dart';
-import 'package:btrips/pages/home/tab3.dart';
+import 'package:btrips/pages/home/ui.dart';
+import 'package:btrips/pages/home/function.dart';
+import 'package:btrips/pages/home/setting.dart';
 import 'package:flutter/material.dart';
 import 'package:fluttertoast/fluttertoast.dart';
 
@@ -19,16 +19,16 @@ class _HomePageState extends State<HomePage>
 
   final List menus = [
     {
-      'icon': 'assets/icons/home.svg',
-      'label': '탭1',
+      'icon': Icons.design_services,
+      'label': 'UI',
     },
     {
-      'icon': 'assets/icons/wallet.svg',
-      'label': '탭2',
+      'icon': Icons.functions,
+      'label': '기능',
     },
     {
-      'icon': 'assets/icons/user.svg',
-      'label': '탭3',
+      'icon': Icons.settings,
+      'label': '설정',
     },
   ];
 
@@ -80,9 +80,9 @@ class _HomePageState extends State<HomePage>
         physics: NeverScrollableScrollPhysics(),
         controller: controller,
         children: [
-          Tab1(),
-          TabTab(),
-          TabTabTab(),
+          UIPage(),
+          FunctionPage(),
+          SettingPage(),
         ],
       );
 
@@ -108,14 +108,8 @@ class _HomePageState extends State<HomePage>
             (index) => BottomNavigationBarItem(
               icon: Container(
                 margin: EdgeInsets.only(bottom: 2),
-                // child: SvgPicture.asset(
-                //   menus[index]['icon'],
-                //   color: controller.index == index
-                //       ? CustomColors.mainColor
-                //       : CustomColors.disabledGrey,
-                // ),
                 child: Icon(
-                  Icons.home,
+                  menus[index]['icon'],
                   color: controller.index == index
                       ? CustomColors.mainColor
                       : CustomColors.disabledGrey,
