@@ -1,3 +1,4 @@
+import 'package:btrips/components/bioAuthButton.dart';
 import 'package:flutter/material.dart';
 
 class Tab1 extends StatefulWidget {
@@ -14,8 +15,9 @@ class _Tab1State extends State<Tab1> {
   Widget build(BuildContext context) {
     return Container(
       child: ListView(
+        padding: EdgeInsets.symmetric(horizontal: 25, vertical: 20),
         children: [
-          Text('1'),
+          BioAuthButton(),
         ],
       ),
     );

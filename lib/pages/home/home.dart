@@ -3,7 +3,6 @@ import 'package:btrips/pages/home/tab1.dart';
 import 'package:btrips/pages/home/tab2.dart';
 import 'package:btrips/pages/home/tab3.dart';
 import 'package:flutter/material.dart';
-import 'package:flutter_svg/flutter_svg.dart';
 import 'package:fluttertoast/fluttertoast.dart';
 
 class HomePage extends StatefulWidget {
@@ -21,15 +20,15 @@ class _HomePageState extends State<HomePage>
   final List menus = [
     {
       'icon': 'assets/icons/home.svg',
-      'label': '홈',
+      'label': '탭1',
     },
     {
       'icon': 'assets/icons/wallet.svg',
-      'label': '지갑',
+      'label': '탭2',
     },
     {
       'icon': 'assets/icons/user.svg',
-      'label': '정보',
+      'label': '탭3',
     },
   ];
 
