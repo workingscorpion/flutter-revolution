@@ -36,6 +36,7 @@ dependencies:
   # ui
   fluttertoast: ^7.1.8
   flutter_svg: ^0.19.1
+  sticky_headers: ^0.1.8+1
 
   cupertino_icons: ^1.0.0
 

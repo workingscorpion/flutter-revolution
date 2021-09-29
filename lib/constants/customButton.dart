@@ -14,7 +14,7 @@ class CustomButton extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return InkWell(
-      onTap: onTap,
+      onTap: onTap ?? () {},
       child: Container(
         height: MediaQuery.of(context).size.height * .1,
         decoration: BoxDecoration(
