@@ -1,5 +1,5 @@
 import 'package:btrips/appRouter.dart';
-import 'package:btrips/constants/customButton.dart';
+import 'package:btrips/components/buttons/customButton.dart';
 import 'package:flutter/material.dart';
 
 class ProgressBarButton extends StatelessWidget {
@@ -9,7 +9,7 @@ class ProgressBarButton extends StatelessWidget {
   Widget build(BuildContext context) {
     return CustomButton(
       image: 'assets/home/progress.png',
-      text: 'progress-bar',
+      text: 'progress Bar',
       onTap: () => AppRouter.toProgressPage(),
     );
   }

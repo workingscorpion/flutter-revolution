@@ -1,6 +1,6 @@
 import 'dart:io';
 
-import 'package:btrips/constants/customButton.dart';
+import 'package:btrips/components/buttons/customButton.dart';
 import 'package:flutter/material.dart';
 import 'package:local_auth/auth_strings.dart';
 import 'package:local_auth/local_auth.dart';

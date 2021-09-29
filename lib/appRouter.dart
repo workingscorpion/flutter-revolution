@@ -2,6 +2,7 @@ import 'package:btrips/constants/routeNames.dart';
 import 'package:btrips/pages/home/home.dart';
 import 'package:btrips/pages/splash.dart';
 import 'package:btrips/pages/ui/progress.dart';
+import 'package:btrips/pages/ui/progressIndicator.dart';
 import 'package:btrips/store/navigationStore.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
@@ -27,6 +28,12 @@ class AppRouter {
           builder: (BuildContext context) => ProgressPage(),
         );
 
+      case RouteNames.ProgressIndicator:
+        return CupertinoPageRoute(
+          settings: settings,
+          builder: (BuildContext context) => ProgressIndicatorPage(),
+        );
+
       default:
         return CupertinoPageRoute(
           settings: settings,
@@ -48,5 +55,9 @@ class AppRouter {
 
   static toProgressPage() {
     return Navigator.of(context).pushNamed(RouteNames.Progress);
+  }
+
+  static toProgressIndicatorPage() {
+    return Navigator.of(context).pushNamed(RouteNames.ProgressIndicator);
   }
 }
