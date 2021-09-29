@@ -19,7 +19,6 @@ class BioAuthButton extends StatelessWidget {
         if (canCheckBiometrics) {
           List<BiometricType> availableBiometrics =
               await auth.getAvailableBiometrics();
-          print(availableBiometrics);
 
           final result = await auth.authenticateWithBiometrics(
             localizedReason: '',
@@ -32,15 +31,11 @@ class BioAuthButton extends StatelessWidget {
             stickyAuth: true,
           );
 
-          print(result);
-
           if (Platform.isIOS) {
             if (availableBiometrics.contains(BiometricType.face)) {
-              print('face ID');
               // Face ID.
             } else if (availableBiometrics
                 .contains(BiometricType.fingerprint)) {
-              print('touch ID');
               // Touch ID.
             }
           }

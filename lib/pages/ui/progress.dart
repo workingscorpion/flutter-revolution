@@ -22,7 +22,6 @@ class _ProgressPageState extends State<ProgressPage> {
 
   @override
   Widget build(BuildContext context) {
-    print((MediaQuery.of(context).size.width - 50) * (percent * 0.01));
     return Scaffold(
       backgroundColor: Colors.white,
       body: SafeArea(
