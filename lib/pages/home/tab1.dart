@@ -45,6 +45,7 @@ class _Tab1State extends State<Tab1> {
           // ),
 
           StickyHeader(
+            // overlapHeaders: ,
             header: Container(
               height: 50.0,
               margin: EdgeInsets.only(bottom: 10),
