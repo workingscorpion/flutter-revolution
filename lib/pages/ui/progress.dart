@@ -125,7 +125,9 @@ class _ProgressPageState extends State<ProgressPage> {
                     ],
                   ),
                 ),
-                content: gradientCircularProgress(),
+                content: Center(
+                  child: gradientCircularProgress(),
+                ),
               ),
             ),
           ],
@@ -195,5 +197,12 @@ class _ProgressPageState extends State<ProgressPage> {
         strokeWidth: 10.0,
       );
 
-  gradientCircularProgress() => Container();
+  gradientCircularProgress() => CircularProgress(
+        percent: 80.0,
+        width: 150,
+        height: 150,
+        strokeWidth: 10.0,
+        startColor: Colors.green,
+        endColor: Colors.blue,
+      );
 }

@@ -1,5 +1,6 @@
 import 'dart:math';
-
+import 'dart:ui' as ui;
+import 'package:vector_math/vector_math.dart' as vectorMath;
 import 'package:flutter/material.dart';
 
 class CircularProgress extends StatefulWidget {
@@ -9,6 +10,9 @@ class CircularProgress extends StatefulWidget {
     this.strokeWidth,
     this.width,
     this.height,
+    this.color = Colors.blue,
+    this.startColor,
+    this.endColor,
   });
 
   final double percent;
@@ -16,6 +20,9 @@ class CircularProgress extends StatefulWidget {
   final double strokeWidth;
   final double width;
   final double height;
+  final Color color;
+  final Color startColor;
+  final Color endColor;
 
   @override
   _CircularProgressState createState() => _CircularProgressState();
@@ -23,48 +30,22 @@ class CircularProgress extends StatefulWidget {
 
 class _CircularProgressState extends State<CircularProgress>
     with TickerProviderStateMixin {
-  // Animation<double> animation;
-  // AnimationController controller;
+  double percent = 0;
 
-  // Tween<double> tweens;
+  @override
+  void initState() {
+    super.initState();
+    increase();
+  }
 
-  // @override
-  // void initState() {
-  //   super.initState();
-
-  //   // controller = AnimationController(
-  //   //   vsync: this,
-  //   //   duration: Duration(seconds: 1),
-  //   // );
-
-  //   // tweens = Tween(
-  //   //   begin: -pi,
-  //   //   end: min(
-  //   //     widget.width / 2 - widget.strokeWidth / 2,
-  //   //     widget.height / 2 - widget.strokeWidth / 2,
-  //   //   ),
-  //   // );
-
-  //   // animation = tweens.animate(controller)
-  //   //   ..addListener(() {
-  //   //     setState(() {});
-  //   //   })
-  //   //   ..addStatusListener((status) {
-  //   //     if (status == AnimationStatus.completed) {
-  //   //       controller.repeat();
-  //   //     } else if (status == AnimationStatus.dismissed) {
-  //   //       controller.forward();
-  //   //     }
-  //   //   });
-
-  //   // controller.forward();
-  // }
-
-  // @override
-  // void dispose() {
-  //   controller.dispose();
-  //   super.dispose();
-  // }
+  increase() async {
+    for (var i = 0; i <= widget.percent; i++) {
+      await Future.delayed(Duration(milliseconds: 10), () {
+        percent = i.toDouble();
+        setState(() {});
+      });
+    }
+  }
 
   @override
   Widget build(BuildContext context) {
@@ -72,8 +53,12 @@ class _CircularProgressState extends State<CircularProgress>
       child: CustomPaint(
         size: Size(widget.width, widget.height),
         painter: PieChart(
-          percent: widget.percent,
+          percent: percent,
           textScaleFactor: widget.textScaleFactor,
+          color: widget.color,
+          startColor: widget.startColor,
+          endColor: widget.endColor,
+          strokeWidth: widget.strokeWidth,
         ),
       ),
     );
@@ -90,6 +75,8 @@ class PieChart extends CustomPainter {
     this.percent = 0,
     this.textScaleFactor = 1.0,
     this.textColor = Colors.black,
+    this.startColor,
+    this.endColor,
   });
 
   final Color emptyColor;
@@ -100,10 +87,17 @@ class PieChart extends CustomPainter {
   final StrokeCap strokeCap;
   final double percent;
   final double textScaleFactor;
+  final Color startColor;
+  final Color endColor;
 
   @override
   void paint(Canvas canvas, Size size) {
-    Paint paint = Paint()
+    // canvas.translate(0.0, size.width);
+    canvas.save();
+    canvas.translate(0.0, size.width);
+    canvas.rotate(vectorMath.radians(-90.0));
+
+    Paint emptyPaint = Paint()
       ..color = emptyColor
       ..strokeWidth = strokeWidth
       ..style = style
@@ -115,36 +109,53 @@ class PieChart extends CustomPainter {
     );
 
     double radius = min(
-      size.width / 2 - paint.strokeWidth / 2,
-      size.height / 2 - paint.strokeWidth / 2,
+      size.width / 2 - emptyPaint.strokeWidth / 2,
+      size.height / 2 - emptyPaint.strokeWidth / 2,
     );
 
-    // Path path = Path();
-    // path.addOval(
-    //   Rect.fromCircle(
-    //     center: center,
-    //     radius: 100,
-    //   ),
-    // );
+    canvas.drawCircle(center, radius, emptyPaint);
 
-    // canvas.drawPath(path, paint);
-
-    canvas.drawCircle(center, radius, paint);
+    Paint paint = Paint()
+      ..strokeCap = emptyPaint.strokeCap
+      ..strokeWidth = emptyPaint.strokeWidth
+      ..style = emptyPaint.style
+      ..strokeCap = emptyPaint.strokeCap;
 
     double arcAngle = 2 * pi * (percent / 100);
 
-    paint..color = color;
+    if (startColor != null && endColor != null) {
+      paint
+        ..shader = SweepGradient(
+          colors: [
+            startColor,
+            endColor,
+          ],
+          startAngle: 0,
+          endAngle: arcAngle,
+        ).createShader(
+          Rect.fromCircle(
+            center: center,
+            radius: radius,
+          ),
+        );
+    } else {
+      paint..color = color;
+    }
+
+    // canvas.drawArc(
+    //     arcRect, 0.0, vectorMath.radians(angle), false, paint);
 
     canvas.drawArc(
       Rect.fromCircle(
         center: center,
         radius: radius,
       ),
-      -pi / 2,
+      0.0,
       arcAngle,
       false,
       paint,
     );
+    canvas.restore();
 
     drawText(canvas, size, "${percent.round()} / 100");
   }

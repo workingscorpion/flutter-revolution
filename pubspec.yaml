@@ -32,6 +32,7 @@ dependencies:
   flutter_local_notifications: ^4.0.1+2
   qr_flutter: ^3.2.0
   local_auth: ^0.6.3+4
+  vector_math: ^2.0.8
 
   # ui
   fluttertoast: ^7.1.8
