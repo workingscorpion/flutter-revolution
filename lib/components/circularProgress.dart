@@ -23,48 +23,48 @@ class CircularProgress extends StatefulWidget {
 
 class _CircularProgressState extends State<CircularProgress>
     with TickerProviderStateMixin {
-  Animation<double> animation;
-  AnimationController controller;
+  // Animation<double> animation;
+  // AnimationController controller;
 
-  Tween<double> tweens;
+  // Tween<double> tweens;
 
-  @override
-  void initState() {
-    super.initState();
+  // @override
+  // void initState() {
+  //   super.initState();
 
-    controller = AnimationController(
-      vsync: this,
-      duration: Duration(seconds: 1),
-    );
+  //   // controller = AnimationController(
+  //   //   vsync: this,
+  //   //   duration: Duration(seconds: 1),
+  //   // );
 
-    tweens = Tween(
-      begin: -pi,
-      end: min(
-        widget.width / 2 - widget.strokeWidth / 2,
-        widget.height / 2 - widget.strokeWidth / 2,
-      ),
-    );
+  //   // tweens = Tween(
+  //   //   begin: -pi,
+  //   //   end: min(
+  //   //     widget.width / 2 - widget.strokeWidth / 2,
+  //   //     widget.height / 2 - widget.strokeWidth / 2,
+  //   //   ),
+  //   // );
 
-    animation = tweens.animate(controller)
-      ..addListener(() {
-        setState(() {});
-      })
-      ..addStatusListener((status) {
-        if (status == AnimationStatus.completed) {
-          controller.repeat();
-        } else if (status == AnimationStatus.dismissed) {
-          controller.forward();
-        }
-      });
+  //   // animation = tweens.animate(controller)
+  //   //   ..addListener(() {
+  //   //     setState(() {});
+  //   //   })
+  //   //   ..addStatusListener((status) {
+  //   //     if (status == AnimationStatus.completed) {
+  //   //       controller.repeat();
+  //   //     } else if (status == AnimationStatus.dismissed) {
+  //   //       controller.forward();
+  //   //     }
+  //   //   });
 
-    controller.forward();
-  }
+  //   // controller.forward();
+  // }
 
-  @override
-  void dispose() {
-    controller.dispose();
-    super.dispose();
-  }
+  // @override
+  // void dispose() {
+  //   controller.dispose();
+  //   super.dispose();
+  // }
 
   @override
   Widget build(BuildContext context) {
