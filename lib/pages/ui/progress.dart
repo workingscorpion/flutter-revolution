@@ -1,4 +1,6 @@
+import 'package:btrips/components/circularProgress.dart';
 import 'package:flutter/material.dart';
+import 'package:sticky_headers/sticky_headers/widget.dart';
 
 class ProgressPage extends StatefulWidget {
   ProgressPage({Key key}) : super(key: key);
@@ -28,13 +30,104 @@ class _ProgressPageState extends State<ProgressPage> {
         child: ListView(
           padding: EdgeInsets.symmetric(horizontal: 25, vertical: 20),
           children: [
-            progressBar(),
-            Container(height: 20),
-            gradientProgressBar(),
-            Container(height: 20),
-            circularProgress(),
-            Container(height: 20),
-            gradientCircularProgress(),
+            Container(
+              decoration: BoxDecoration(
+                border: Border.all(color: Colors.black, width: 1),
+                borderRadius: BorderRadius.circular(8),
+              ),
+              margin: EdgeInsets.only(bottom: 50),
+              padding: EdgeInsets.symmetric(horizontal: 10, vertical: 20),
+              child: StickyHeader(
+                header: Container(
+                  margin: EdgeInsets.only(bottom: 20),
+                  alignment: Alignment.centerLeft,
+                  child: Row(
+                    children: [
+                      Container(
+                        margin: EdgeInsets.only(right: 5),
+                        child: Icon(Icons.bar_chart),
+                      ),
+                      Text('ProgressBar'),
+                    ],
+                  ),
+                ),
+                content: progressBar(),
+              ),
+            ),
+            Container(
+              decoration: BoxDecoration(
+                border: Border.all(color: Colors.black, width: 1),
+                borderRadius: BorderRadius.circular(8),
+              ),
+              margin: EdgeInsets.only(bottom: 50),
+              padding: EdgeInsets.symmetric(horizontal: 10, vertical: 20),
+              child: StickyHeader(
+                header: Container(
+                  margin: EdgeInsets.only(bottom: 20),
+                  alignment: Alignment.centerLeft,
+                  child: Row(
+                    children: [
+                      Container(
+                        margin: EdgeInsets.only(right: 5),
+                        child: Icon(Icons.bar_chart),
+                      ),
+                      Text('GradientProgressBar'),
+                    ],
+                  ),
+                ),
+                content: gradientProgressBar(),
+              ),
+            ),
+            Container(
+              decoration: BoxDecoration(
+                border: Border.all(color: Colors.black, width: 1),
+                borderRadius: BorderRadius.circular(8),
+              ),
+              margin: EdgeInsets.only(bottom: 50),
+              padding: EdgeInsets.symmetric(horizontal: 10, vertical: 20),
+              child: StickyHeader(
+                header: Container(
+                  margin: EdgeInsets.only(bottom: 20),
+                  alignment: Alignment.centerLeft,
+                  child: Row(
+                    children: [
+                      Container(
+                        margin: EdgeInsets.only(right: 5),
+                        child: Icon(Icons.pie_chart),
+                      ),
+                      Text('CircularProgress'),
+                    ],
+                  ),
+                ),
+                content: Center(
+                  child: circularProgress(),
+                ),
+              ),
+            ),
+            Container(
+              decoration: BoxDecoration(
+                border: Border.all(color: Colors.black, width: 1),
+                borderRadius: BorderRadius.circular(8),
+              ),
+              margin: EdgeInsets.only(bottom: 50),
+              padding: EdgeInsets.symmetric(horizontal: 10, vertical: 20),
+              child: StickyHeader(
+                header: Container(
+                  margin: EdgeInsets.only(bottom: 20),
+                  alignment: Alignment.centerLeft,
+                  child: Row(
+                    children: [
+                      Container(
+                        margin: EdgeInsets.only(right: 5),
+                        child: Icon(Icons.pie_chart),
+                      ),
+                      Text('GradientCircularProgress'),
+                    ],
+                  ),
+                ),
+                content: gradientCircularProgress(),
+              ),
+            ),
           ],
         ),
       ),
@@ -95,6 +188,12 @@ class _ProgressPageState extends State<ProgressPage> {
         ),
       );
 
-  circularProgress() => Container();
+  circularProgress() => CircularProgress(
+        percent: 50.0,
+        width: 150,
+        height: 150,
+        strokeWidth: 10.0,
+      );
+
   gradientCircularProgress() => Container();
 }
