@@ -1,5 +1,6 @@
 import 'package:btrips/components/buttons/progressBar.dart';
 import 'package:btrips/components/buttons/progressIndicator.dart';
+import 'package:btrips/components/buttons/timer.dart';
 import 'package:flutter/material.dart';
 import 'package:sticky_headers/sticky_headers.dart';
 
@@ -35,6 +36,7 @@ class _UIPageState extends State<UIPage> {
               children: [
                 ProgressBarButton(),
                 ProgressIndicatorButton(),
+                TimerButton(),
               ],
             ),
           ),
