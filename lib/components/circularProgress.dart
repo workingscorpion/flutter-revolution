@@ -11,8 +11,8 @@ class CircularProgress extends StatefulWidget {
     this.width,
     this.height,
     this.color = Colors.blue,
-    this.startColor = Colors.green,
-    this.endColor = Colors.blue,
+    this.startColor,
+    this.endColor,
   });
 
   final double percent;
