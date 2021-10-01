@@ -1,5 +1,5 @@
 import 'dart:math';
-import 'dart:ui' as ui;
+// import 'dart:ui' as ui;
 import 'package:vector_math/vector_math.dart' as vectorMath;
 import 'package:flutter/material.dart';
 
@@ -11,8 +11,8 @@ class CircularProgress extends StatefulWidget {
     this.width,
     this.height,
     this.color = Colors.blue,
-    this.startColor,
-    this.endColor,
+    this.startColor = Colors.green,
+    this.endColor = Colors.blue,
   });
 
   final double percent;
@@ -130,8 +130,6 @@ class PieChart extends CustomPainter {
             startColor,
             endColor,
           ],
-          startAngle: 0,
-          endAngle: arcAngle,
         ).createShader(
           Rect.fromCircle(
             center: center,
