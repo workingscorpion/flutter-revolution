@@ -1,4 +1,4 @@
-import 'package:btrips/app.dart';
+import 'package:revolution/app.dart';
 import 'package:flutter/material.dart';
 
 void main() {

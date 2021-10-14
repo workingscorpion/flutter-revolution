@@ -1,5 +1,5 @@
-import 'package:btrips/components/circularProgress.dart';
-import 'package:btrips/components/customBox.dart';
+import 'package:revolution/components/circularProgress.dart';
+import 'package:revolution/components/customBox.dart';
 import 'package:flutter/material.dart';
 import 'package:sticky_headers/sticky_headers/widget.dart';
 

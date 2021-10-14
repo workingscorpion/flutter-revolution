@@ -1,6 +1,6 @@
-import 'package:btrips/appRouter.dart';
-import 'package:btrips/constants/routeNames.dart';
-import 'package:btrips/store/navigationStore.dart';
+import 'package:revolution/appRouter.dart';
+import 'package:revolution/constants/routeNames.dart';
+import 'package:revolution/store/navigationStore.dart';
 import 'package:flutter/material.dart';
 
 class App extends StatelessWidget {

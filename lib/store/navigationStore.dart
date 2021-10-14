@@ -1,4 +1,4 @@
-import 'package:btrips/utils/lazy.dart';
+import 'package:revolution/utils/lazy.dart';
 import 'package:flutter/material.dart';
 import 'package:mobx/mobx.dart';
 

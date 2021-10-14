@@ -1,6 +1,6 @@
-import 'package:btrips/components/buttons/progressBar.dart';
-import 'package:btrips/components/buttons/progressIndicator.dart';
-import 'package:btrips/components/buttons/stampDialog.dart';
+import 'package:revolution/components/buttons/progressBar.dart';
+import 'package:revolution/components/buttons/progressIndicator.dart';
+import 'package:revolution/components/buttons/stampDialog.dart';
 import 'package:flutter/material.dart';
 import 'package:sticky_headers/sticky_headers.dart';
 

@@ -1,5 +1,5 @@
-import 'package:btrips/appRouter.dart';
-import 'package:btrips/components/buttons/customButton.dart';
+import 'package:revolution/appRouter.dart';
+import 'package:revolution/components/buttons/customButton.dart';
 import 'package:flutter/material.dart';
 
 class ProgressBarButton extends StatelessWidget {

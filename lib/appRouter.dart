@@ -1,9 +1,9 @@
-import 'package:btrips/constants/routeNames.dart';
-import 'package:btrips/pages/home/home.dart';
-import 'package:btrips/pages/splash.dart';
-import 'package:btrips/pages/ui/progress.dart';
-import 'package:btrips/pages/ui/progressIndicator.dart';
-import 'package:btrips/store/navigationStore.dart';
+import 'package:revolution/constants/routeNames.dart';
+import 'package:revolution/pages/home/home.dart';
+import 'package:revolution/pages/splash.dart';
+import 'package:revolution/pages/ui/progress.dart';
+import 'package:revolution/pages/ui/progressIndicator.dart';
+import 'package:revolution/store/navigationStore.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 

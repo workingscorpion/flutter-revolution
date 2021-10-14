@@ -1,4 +1,4 @@
-import 'package:btrips/appRouter.dart';
+import 'package:revolution/appRouter.dart';
 import 'package:flutter/material.dart';
 
 class SplashPage extends StatefulWidget {
@@ -40,7 +40,7 @@ class _SplashPageState extends State<SplashPage> {
                       ),
                     ),
                     Text(
-                      'BTRIPS',
+                      'revolution',
                       style:
                           TextStyle(fontWeight: FontWeight.bold, fontSize: 25),
                     ),

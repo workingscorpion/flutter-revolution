@@ -1,7 +1,7 @@
-import 'package:btrips/constants/customColors.dart';
-import 'package:btrips/pages/home/ui.dart';
-import 'package:btrips/pages/home/function.dart';
-import 'package:btrips/pages/home/setting.dart';
+import 'package:revolution/constants/customColors.dart';
+import 'package:revolution/pages/home/ui.dart';
+import 'package:revolution/pages/home/function.dart';
+import 'package:revolution/pages/home/setting.dart';
 import 'package:flutter/material.dart';
 import 'package:fluttertoast/fluttertoast.dart';
 

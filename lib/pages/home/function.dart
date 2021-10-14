@@ -1,4 +1,4 @@
-import 'package:btrips/components/buttons/bioAuth.dart';
+import 'package:revolution/components/buttons/bioAuth.dart';
 import 'package:flutter/material.dart';
 import 'package:sticky_headers/sticky_headers.dart';
 

@@ -1,7 +1,7 @@
-import 'package:btrips/appRouter.dart';
-import 'package:btrips/components/buttons/customButton.dart';
-import 'package:btrips/components/stampDialog.dart';
-import 'package:btrips/constants/customColors.dart';
+import 'package:revolution/appRouter.dart';
+import 'package:revolution/components/buttons/customButton.dart';
+import 'package:revolution/components/stampDialog.dart';
+import 'package:revolution/constants/customColors.dart';
 import 'package:flutter/material.dart';
 
 class StampDialogButton extends StatelessWidget {
