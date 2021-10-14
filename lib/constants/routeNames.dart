@@ -5,4 +5,5 @@ class RouteNames {
 
   static const String Progress = '/progress';
   static const String ProgressIndicator = '/progress-indicator';
+  static const String Ticket = '/ticket';
 }

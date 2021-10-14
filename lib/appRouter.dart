@@ -3,6 +3,7 @@ import 'package:revolution/pages/home/home.dart';
 import 'package:revolution/pages/splash.dart';
 import 'package:revolution/pages/ui/progress.dart';
 import 'package:revolution/pages/ui/progressIndicator.dart';
+import 'package:revolution/pages/ui/ticket.dart';
 import 'package:revolution/store/navigationStore.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
@@ -34,6 +35,12 @@ class AppRouter {
           builder: (BuildContext context) => ProgressIndicatorPage(),
         );
 
+      case RouteNames.Ticket:
+        return CupertinoPageRoute(
+          settings: settings,
+          builder: (BuildContext context) => TicketPage(),
+        );
+
       default:
         return CupertinoPageRoute(
           settings: settings,
@@ -59,5 +66,9 @@ class AppRouter {
 
   static toProgressIndicatorPage() {
     return Navigator.of(context).pushNamed(RouteNames.ProgressIndicator);
+  }
+
+  static toTicketPage() {
+    return Navigator.of(context).pushNamed(RouteNames.Ticket);
   }
 }
