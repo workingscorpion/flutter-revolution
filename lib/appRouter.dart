@@ -1,4 +1,5 @@
 import 'package:revolution/constants/routeNames.dart';
+import 'package:revolution/pages/function/infiniteScroll.dart';
 import 'package:revolution/pages/home/home.dart';
 import 'package:revolution/pages/splash.dart';
 import 'package:revolution/pages/ui/progress.dart';
@@ -41,6 +42,12 @@ class AppRouter {
           builder: (BuildContext context) => TicketPage(),
         );
 
+      case RouteNames.InfiniteScroll:
+        return CupertinoPageRoute(
+          settings: settings,
+          builder: (BuildContext context) => InfiniteScrollPage(),
+        );
+
       default:
         return CupertinoPageRoute(
           settings: settings,
@@ -70,5 +77,9 @@ class AppRouter {
 
   static toTicketPage() {
     return Navigator.of(context).pushNamed(RouteNames.Ticket);
+  }
+
+  static toInifiteScrollPage() {
+    return Navigator.of(context).pushNamed(RouteNames.InfiniteScroll);
   }
 }
