@@ -53,7 +53,6 @@ class _FlipClockState extends State<FlipClock>
     controller =
         AnimationController(duration: Duration(milliseconds: 400), vsync: this)
           ..addStatusListener((status) {
-            print(status);
             if (status == AnimationStatus.completed) {
               controller.reset();
             }
@@ -92,9 +91,6 @@ class _FlipClockState extends State<FlipClock>
         "${now.minute < 10 ? '0${now.minute}' : '${now.minute}'}".split("");
     final secondSplit =
         "${now.second < 10 ? '0${now.second}' : '${now.second}'}".split("");
-    final a = firstSecond.sublist(1);
-    final d = a..add(secondSplit.first);
-    print(d);
     firstHour = firstHour.sublist(1)..add(hourSplit.first);
     lastHour = lastHour.sublist(1)..add(hourSplit.last);
     firstMinute = firstMinute.sublist(1)..add(minuteSplit.first);
