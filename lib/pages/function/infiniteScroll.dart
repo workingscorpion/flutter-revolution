@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_mobx/flutter_mobx.dart';
+import 'package:revolution/components/infiniteScroll.dart';
 import 'package:revolution/model/listItem.dart';
 import 'package:revolution/store/infiniteScrollStore.dart';
 
@@ -11,33 +12,22 @@ class InfiniteScrollPage extends StatefulWidget {
 }
 
 class _InfiniteScrollPageState extends State<InfiniteScrollPage> {
-  int page = 0;
+  int page = 1;
   int size = 10;
-  ScrollController controller = ScrollController();
+  double reloadOffset = .3;
 
-  @override
-  void initState() {
-    super.initState();
-    load();
-    controller.addListener(() {
-      // if()
-      // print('controller.position.pixels: ${controller.position.pixels}');
-      print('controller.offset: ${controller.offset}');
-      print(
-        'controller.position.maxScrollExtent: ${controller.position.maxScrollExtent}',
+  load({bool refresh = false}) async {
+    if (InfiniteScrollStore.instance.loading != true) {
+      if (refresh) {
+        page = 1;
+      } else {
+        page++;
+      }
+      await InfiniteScrollStore.instance.load(
+        page: page ?? 1,
+        size: size ?? 10,
       );
-    });
-  }
-
-  load({page = 1}) async {
-    await InfiniteScrollStore.instance.load(page: page, size: size);
-
-    Future.delayed(Duration(seconds: 1), () {
-      print('controller.offset on Init: ${controller.offset}');
-      print(
-        'controller.position.maxScrollExtent on Init: ${controller.position.maxScrollExtent}',
-      );
-    });
+    }
   }
 
   @override
@@ -45,16 +35,13 @@ class _InfiniteScrollPageState extends State<InfiniteScrollPage> {
     return Scaffold(
       backgroundColor: Colors.white,
       body: SafeArea(
-        child: RefreshIndicator(
-          onRefresh: () => load(),
-          child: Observer(
-            builder: (context) => ListView(
-              controller: controller,
-              children: InfiniteScrollStore.instance.list
-                  .map((e) => item(e))
-                  .toList(),
-            ),
-          ),
+        child: InfiniteScoll(
+          refresh: () => load(refresh: true),
+          loadMore: () => load(),
+          reloadOffset: reloadOffset,
+          items: InfiniteScrollStore.instance.list,
+          itemBuilder: (ListItem e) => item(e),
+          spinColor: Colors.grey,
         ),
       ),
     );

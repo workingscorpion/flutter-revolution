@@ -13,7 +13,7 @@ class InfiniteScrollStore extends InfiniteScrollStoreBase
 }
 
 abstract class InfiniteScrollStoreBase with Store {
-  ObservableList list = new ObservableList();
+  ObservableList<ListItem> list = new ObservableList();
 
   List<ListItem> newList = new List<ListItem>.generate(
     100,
