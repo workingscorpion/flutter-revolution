@@ -39,6 +39,7 @@ class _UIPageState extends State<UIPage> {
                 ProgressIndicatorButton(),
                 TimerButton(),
                 TicketButton(),
+                // TODO: number sliding animation with formatting
                 // TODO: 토스트 자체 제작
                 // TODO: snackbar
                 // TODO: 성공, 실패  마스크 아이콘
