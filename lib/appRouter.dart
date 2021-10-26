@@ -6,7 +6,7 @@ import 'package:revolution/pages/ui/progress.dart';
 import 'package:revolution/pages/ui/progressIndicator.dart';
 import 'package:revolution/pages/ui/ticket.dart';
 import 'package:revolution/store/navigationStore.dart';
-import 'package:btrips/pages/ui/timer.dart';
+import 'package:revolution/pages/ui/timer.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 

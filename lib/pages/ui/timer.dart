@@ -1,7 +1,7 @@
-import 'package:btrips/components/countdown.dart';
-import 'package:btrips/components/customBox.dart';
-import 'package:btrips/components/clock.dart';
-import 'package:btrips/components/flipClock.dart';
+import 'package:revolution/components/countdown.dart';
+import 'package:revolution/components/customBox.dart';
+import 'package:revolution/components/clock.dart';
+import 'package:revolution/components/flipClock.dart';
 import 'package:flutter/material.dart';
 
 class TimerPage extends StatefulWidget {
