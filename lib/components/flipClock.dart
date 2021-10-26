@@ -1,12 +1,13 @@
 import 'dart:async';
 import 'dart:math' as math;
 
-import 'package:flip_panel/flip_panel.dart';
 import 'package:flutter/material.dart';
 import 'package:intl/intl.dart';
 
 class FlipClock extends StatefulWidget {
-  FlipClock({Key key}) : super(key: key);
+  FlipClock({this.endTime});
+
+  final DateTime endTime;
 
   @override
   _FlipClockState createState() => _FlipClockState();
@@ -100,8 +101,31 @@ class _FlipClockState extends State<FlipClock>
     setState(() {});
   }
 
+  resetDuration() {
+    final diff = widget.endTime.difference(DateTime.now());
+    final hour = diff.inHours - diff.inDays * 24;
+    final minute = diff.inMinutes - diff.inHours * 60;
+    final second = diff.inSeconds - diff.inMinutes * 60;
+    final hourSplit = "${diff.inHours < 10 ? '0$hour' : '$hour'}".split("");
+    final minuteSplit =
+        "${diff.inMinutes < 10 ? '5$minute' : '$minute'}".split("");
+    final secondSplit =
+        "${diff.inSeconds < 10 ? '5$second' : '$second'}".split("");
+    firstHour = firstHour.sublist(1)..add(hourSplit.first);
+    lastHour = lastHour.sublist(1)..add(hourSplit.last);
+    firstMinute = firstMinute.sublist(1)..add(minuteSplit.first);
+    lastMinute = lastMinute.sublist(1)..add(minuteSplit.last);
+    firstSecond = firstSecond.sublist(1)..add(secondSplit.first);
+    lastSecond = lastSecond.sublist(1)..add(secondSplit.last);
+    setState(() {});
+  }
+
   getTime() {
-    resetTime();
+    if (widget.endTime != null) {
+      resetDuration();
+    } else {
+      resetTime();
+    }
     controller.forward();
   }
 

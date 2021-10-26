@@ -34,7 +34,14 @@ class _TimerPageState extends State<TimerPage> {
             ),
             CustomBox(
               child: FlipClock(),
-              title: 'CountDown',
+              title: 'Flip Clock',
+              icon: Icons.timer,
+            ),
+            CustomBox(
+              child: FlipClock(
+                endTime: DateTime.now().add(Duration(hours: 2)),
+              ),
+              title: 'Flip CountDown',
               icon: Icons.timer,
             ),
           ],
