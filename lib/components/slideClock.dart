@@ -4,13 +4,16 @@ import 'package:flutter/material.dart';
 import 'package:intl/intl.dart';
 
 class SlideClock extends StatefulWidget {
-  SlideClock({Key key}) : super(key: key);
+  SlideClock({this.duration});
+
+  final Duration duration;
 
   @override
   _SlideClockState createState() => _SlideClockState();
 }
 
-class _SlideClockState extends State<SlideClock> {
+class _SlideClockState extends State<SlideClock>
+    with SingleTickerProviderStateMixin {
   List<String> firstHour = ["0", "0"];
   List<String> lastHour = ["0", "0"];
   List<String> firstMinute = ["0", "0"];
@@ -26,9 +29,48 @@ class _SlideClockState extends State<SlideClock> {
 
   @override
   void initState() {
-    super.initState();
+    setController();
     setTimer();
     timer = Timer.periodic(Duration(milliseconds: 1000), (timer) => setTimer());
+    super.initState();
+  }
+
+  @override
+  void dispose() {
+    timer.cancel();
+    controller.removeListener(() {});
+    controller.dispose();
+    animation.removeListener(() {});
+    super.dispose();
+  }
+
+  setController() {
+    controller = AnimationController(duration: widget.duration, vsync: this)
+      ..addStatusListener((status) {
+        print(status);
+        if (status == AnimationStatus.completed) {
+          controller.reset();
+          running = false;
+          setState(() {});
+        }
+        // if (status == AnimationStatus.reverse) {
+        //   running = false;
+        //   setState(() {});
+        // }
+      })
+      ..addListener(() {
+        running = true;
+        setState(() {});
+      });
+
+    animation = Tween(begin: 0.0, end: 1.0).animate(CurvedAnimation(
+      parent: controller,
+      curve: Curves.easeInOut,
+    ))
+      ..addListener(() {
+        // print(animation.value);
+        setState(() {});
+      });
   }
 
   setTimer() {
@@ -46,6 +88,8 @@ class _SlideClockState extends State<SlideClock> {
     firstSecond = firstSecond.sublist(1)..add(secondSplit.first);
     lastSecond = lastSecond.sublist(1)..add(secondSplit.last);
     setState(() {});
+    controller.forward();
+    // controller.repeat(period: Duration(milliseconds: 1000), reverse: true);
   }
 
   @override
@@ -65,6 +109,7 @@ class _SlideClockState extends State<SlideClock> {
 
   clock() => Container(
         child: Row(
+          mainAxisAlignment: MainAxisAlignment.center,
           children: [
             panels(firstHour, lastHour),
             Container(
@@ -105,7 +150,7 @@ class _SlideClockState extends State<SlideClock> {
         ),
       );
 
-  Widget panel(List<String> value) => Container(
+  Widget panel(List<String> values) => Container(
         height: 50,
         width: 30,
         decoration: BoxDecoration(
@@ -113,9 +158,42 @@ class _SlideClockState extends State<SlideClock> {
           color: Colors.black,
         ),
         alignment: Alignment.center,
+        child: Stack(
+          children: values.first != values.last && running
+              ? [
+                  child(
+                    value: values.first,
+                    // opacity:
+                    //     1.0 - animation.value == 1.0 ? 0 : 1 - animation.value,
+                    opacity: running ? 1 - animation.value : null,
+                    bottom: 50.0 * (animation.value / 1),
+                  ),
+                  child(
+                    value: values.last,
+                    opacity: animation.value,
+                    // opacity: running ? animation.value : null,
+                    bottom: 50.0 * (animation.value / 1) - 50 != -50
+                        ? 50.0 * (animation.value / 1) - 50
+                        : 0,
+                  ),
+                ]
+              : [child(value: values.last)],
+        ),
+      );
+
+  child({String value, double opacity, double bottom}) {
+    return Positioned(
+      bottom: bottom ?? 0,
+      left: 4,
+      child: AnimatedOpacity(
+        duration: Duration(milliseconds: 500),
+        opacity: opacity ?? 1.0,
+        // opacity: opacity == 0 ? 1.0 : (opacity ?? 1.0),
         child: Text(
           '$value',
           style: TextStyle(color: Colors.white, fontSize: 40),
         ),
-      );
+      ),
+    );
+  }
 }

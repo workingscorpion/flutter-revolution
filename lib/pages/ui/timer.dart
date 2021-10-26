@@ -47,7 +47,9 @@ class _TimerPageState extends State<TimerPage> {
               icon: Icons.timer,
             ),
             CustomBox(
-              child: SlideClock(),
+              child: SlideClock(
+                duration: Duration(milliseconds: 600),
+              ),
               title: 'Slide Click',
               icon: Icons.timer,
             ),
