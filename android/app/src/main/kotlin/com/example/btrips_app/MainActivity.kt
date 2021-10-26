@@ -1,4 +1,4 @@
-package com.example.revolution
+package com.scorpion.revolution
 
 // import io.flutter.app.FlutterFragmentActivity
 
