@@ -43,6 +43,7 @@ class _UIPageState extends State<UIPage> {
                 // TODO: 토스트 자체 제작
                 // TODO: snackbar
                 // TODO: 성공, 실패  마스크 아이콘
+                // TODO: custom switch(from 유진쓰)
               ],
             ),
           ),
