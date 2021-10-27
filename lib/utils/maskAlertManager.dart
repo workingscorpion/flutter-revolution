@@ -4,28 +4,24 @@ import 'package:revolution/appRouter.dart';
 class MaskAlertManager {
   static showMaskAlert({
     BuildContext context,
-    bool success,
+    IconData icon,
     Duration duration,
   }) async {
     await showDialog(
       context: context,
       barrierColor: Colors.transparent,
       child: MaskAlert(
-        success: true,
-        duration: duration ?? Duration(milliseconds: 300),
+        icon: icon,
+        duration: duration ?? Duration(milliseconds: 500),
       ),
     );
-    // return MaskAlert(
-    //   success: success,
-    //   duration: duration ?? Duration(milliseconds: 300),
-    // );
   }
 }
 
 class MaskAlert extends StatefulWidget {
-  MaskAlert({this.success, this.duration});
+  MaskAlert({this.icon, this.duration});
 
-  final bool success;
+  final IconData icon;
   final Duration duration;
 
   @override
@@ -59,8 +55,15 @@ class _MaskAlertState extends State<MaskAlert>
   }
 
   @override
+  void dispose() {
+    controller.removeListener(() {});
+    animation.removeListener(() {});
+    controller.dispose();
+    super.dispose();
+  }
+
+  @override
   Widget build(BuildContext context) {
-    print(animation.value);
     return Material(
       color: Colors.transparent,
       child: Center(
@@ -70,16 +73,16 @@ class _MaskAlertState extends State<MaskAlert>
             builder: (context, child) => Opacity(
               opacity: 1 - animation.value,
               child: Container(
-                width: size.width * .2 * animation.value,
-                height: size.width * .2 * animation.value,
+                width: size.width * .15 * (animation.value + 1),
+                height: size.width * .15 * (animation.value + 1),
                 decoration: BoxDecoration(
                   shape: BoxShape.circle,
-                  color: Colors.black.withOpacity(.2),
+                  color: Colors.black.withOpacity(.3),
                 ),
                 child: Icon(
-                  widget.success ? Icons.check : Icons.delete,
+                  widget.icon,
                   color: Colors.white,
-                  size: 50 * animation.value,
+                  size: 30 * (animation.value + 1),
                 ),
               ),
             ),
@@ -97,6 +100,6 @@ class _MaskAlertState extends State<MaskAlert>
           shape: BoxShape.circle,
           color: Colors.black.withOpacity(.2),
         ),
-        child: Icon(widget.success ? Icons.check : Icons.delete),
+        child: Icon(widget.icon),
       );
 }
