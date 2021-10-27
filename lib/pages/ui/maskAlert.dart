@@ -18,7 +18,7 @@ class MaskAlertPage extends StatelessWidget {
         child: Row(
           mainAxisAlignment: MainAxisAlignment.center,
           children: [
-            InkWell(
+            GestureDetector(
               onTap: () => showMaskAlert(context, Icons.check),
               child: Container(
                 padding: EdgeInsets.all(10),
@@ -37,7 +37,7 @@ class MaskAlertPage extends StatelessWidget {
               ),
             ),
             Container(width: 30),
-            InkWell(
+            GestureDetector(
               onTap: () => showMaskAlert(context, Icons.close),
               child: Container(
                 padding: EdgeInsets.all(10),
