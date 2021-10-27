@@ -47,7 +47,6 @@ class _SlideClockState extends State<SlideClock>
   setController() {
     controller = AnimationController(duration: widget.duration, vsync: this)
       ..addStatusListener((status) {
-        print(status);
         if (status == AnimationStatus.completed) {
           controller.reset();
           running = false;
