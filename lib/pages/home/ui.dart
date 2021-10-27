@@ -1,3 +1,4 @@
+import 'package:revolution/components/buttons/maskAlert.dart';
 import 'package:revolution/components/buttons/progressBar.dart';
 import 'package:revolution/components/buttons/progressIndicator.dart';
 import 'package:revolution/components/buttons/timer.dart';
@@ -39,10 +40,10 @@ class _UIPageState extends State<UIPage> {
                 ProgressIndicatorButton(),
                 TimerButton(),
                 TicketButton(),
+                MaskAlertButton(),
                 // TODO: number sliding animation with formatting
                 // TODO: 토스트 자체 제작
                 // TODO: snackbar
-                // TODO: 성공, 실패  마스크 아이콘
                 // TODO: custom switch(from 유진쓰)
               ],
             ),

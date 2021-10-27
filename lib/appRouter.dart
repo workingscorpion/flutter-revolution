@@ -2,6 +2,7 @@ import 'package:revolution/constants/routeNames.dart';
 import 'package:revolution/pages/function/infiniteScroll.dart';
 import 'package:revolution/pages/home/home.dart';
 import 'package:revolution/pages/splash.dart';
+import 'package:revolution/pages/ui/maskAlert.dart';
 import 'package:revolution/pages/ui/progress.dart';
 import 'package:revolution/pages/ui/progressIndicator.dart';
 import 'package:revolution/pages/ui/ticket.dart';
@@ -49,6 +50,12 @@ class AppRouter {
           builder: (BuildContext context) => TicketPage(),
         );
 
+      case RouteNames.MaskAlert:
+        return CupertinoPageRoute(
+          settings: settings,
+          builder: (BuildContext context) => MaskAlertPage(),
+        );
+
       case RouteNames.InfiniteScroll:
         return CupertinoPageRoute(
           settings: settings,
@@ -88,6 +95,10 @@ class AppRouter {
 
   static toTicketPage() {
     return Navigator.of(context).pushNamed(RouteNames.Ticket);
+  }
+
+  static toMaskAlertPage() {
+    return Navigator.of(context).pushNamed(RouteNames.MaskAlert);
   }
 
   static toInifiteScrollPage() {

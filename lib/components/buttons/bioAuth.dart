@@ -1,9 +1,11 @@
 import 'dart:io';
 
+import 'package:revolution/appRouter.dart';
 import 'package:revolution/components/buttons/customButton.dart';
 import 'package:flutter/material.dart';
 import 'package:local_auth/auth_strings.dart';
 import 'package:local_auth/local_auth.dart';
+import 'package:revolution/utils/maskAlertManager.dart';
 
 class BioAuthButton extends StatelessWidget {
   const BioAuthButton({Key key}) : super(key: key);
@@ -29,6 +31,11 @@ class BioAuthButton extends StatelessWidget {
               signInTitle: '지문 인식',
             ),
             stickyAuth: true,
+          );
+
+          MaskAlertManager.showMaskAlert(
+            context: context,
+            icon: result ? Icons.check : Icons.cancel,
           );
 
           if (Platform.isIOS) {
