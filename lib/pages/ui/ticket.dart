@@ -91,11 +91,17 @@ class TicketPage extends StatelessWidget {
             Container(height: 10),
             Container(
               alignment: Alignment.center,
-              child: Text(
-                '내역 보러가기',
-                style: TextStyle(
-                  decoration: TextDecoration.underline,
-                ),
+              child: IntrinsicWidth(
+                child: Container(
+                    decoration: BoxDecoration(
+                      border: Border(
+                        bottom: BorderSide(
+                          color: Colors.black,
+                          width: 1,
+                        ),
+                      ),
+                    ),
+                    child: Text('내역 보러가기')),
               ),
             ),
             Container(height: 12),
