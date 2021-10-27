@@ -19,7 +19,7 @@ class _TimerPageState extends State<TimerPage> {
     return Scaffold(
       body: SafeArea(
         child: ListView(
-          padding: EdgeInsets.symmetric(horizontal: 25),
+          padding: EdgeInsets.symmetric(horizontal: 25, vertical: 20),
           children: [
             CustomBox(
               child: Clock(),
@@ -34,18 +34,18 @@ class _TimerPageState extends State<TimerPage> {
               title: 'CountDown',
               icon: Icons.timer,
             ),
-            CustomBox(
-              child: FlipClock(),
-              title: 'Flip Clock',
-              icon: Icons.timer,
-            ),
-            CustomBox(
-              child: FlipClock(
-                endTime: DateTime.now().add(Duration(hours: 2)),
-              ),
-              title: 'Flip CountDown',
-              icon: Icons.timer,
-            ),
+            // CustomBox(
+            //   child: FlipClock(),
+            //   title: 'Flip Clock',
+            //   icon: Icons.timer,
+            // ),
+            // CustomBox(
+            //   child: FlipClock(
+            //     endTime: DateTime.now().add(Duration(hours: 2)),
+            //   ),
+            //   title: 'Flip CountDown',
+            //   icon: Icons.timer,
+            // ),
             CustomBox(
               child: SlideClock(
                 duration: Duration(milliseconds: 600),

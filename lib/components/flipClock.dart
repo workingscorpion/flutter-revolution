@@ -204,7 +204,6 @@ class _FlipClockState extends State<FlipClock>
                     ..rotateX(topAnimation.value),
                   alignment: Alignment.bottomCenter,
                   child: topChild(value.last),
-                  // child: topChild((int.parse(value.last) + 1).toString()),
                 )
               : Container(),
         ],
@@ -220,7 +219,6 @@ class _FlipClockState extends State<FlipClock>
                     ..rotateX(bottomAnimation.value),
                   alignment: Alignment.topCenter,
                   child: bottomChild(value.last),
-                  // child: bottomChild((int.parse(value.last) + 1).toString()),
                 )
               : Container(),
         ],

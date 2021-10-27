@@ -49,14 +49,10 @@ class _SlideClockState extends State<SlideClock>
       ..addStatusListener((status) {
         print(status);
         if (status == AnimationStatus.completed) {
-          controller.reset();
           running = false;
           setState(() {});
+          controller.reset();
         }
-        // if (status == AnimationStatus.reverse) {
-        //   running = false;
-        //   setState(() {});
-        // }
       })
       ..addListener(() {
         running = true;
@@ -65,10 +61,10 @@ class _SlideClockState extends State<SlideClock>
 
     animation = Tween(begin: 0.0, end: 1.0).animate(CurvedAnimation(
       parent: controller,
-      curve: Curves.easeInOut,
+      curve: Curves.ease,
     ))
       ..addListener(() {
-        // print(animation.value);
+        print(animation.value);
         setState(() {});
       });
   }
@@ -89,7 +85,6 @@ class _SlideClockState extends State<SlideClock>
     lastSecond = lastSecond.sublist(1)..add(secondSplit.last);
     setState(() {});
     controller.forward();
-    // controller.repeat(period: Duration(milliseconds: 1000), reverse: true);
   }
 
   @override
@@ -159,19 +154,20 @@ class _SlideClockState extends State<SlideClock>
         ),
         alignment: Alignment.center,
         child: Stack(
-          children: values.first != values.last && running
+          children: values.first != values.last
               ? [
                   child(
-                    value: values.first,
-                    // opacity:
-                    //     1.0 - animation.value == 1.0 ? 0 : 1 - animation.value,
-                    opacity: running ? 1 - animation.value : null,
+                    value: running ? values.first : values.last,
+                    opacity: running
+                        ? 1.0 - animation.value == 1.0
+                            ? 1.0
+                            : 1 - animation.value
+                        : 1.0,
                     bottom: 50.0 * (animation.value / 1),
                   ),
                   child(
                     value: values.last,
                     opacity: animation.value,
-                    // opacity: running ? animation.value : null,
                     bottom: 50.0 * (animation.value / 1) - 50 != -50
                         ? 50.0 * (animation.value / 1) - 50
                         : 0,
@@ -185,13 +181,11 @@ class _SlideClockState extends State<SlideClock>
     return Positioned(
       bottom: bottom ?? 0,
       left: 4,
-      child: AnimatedOpacity(
-        duration: Duration(milliseconds: 500),
-        opacity: opacity ?? 1.0,
-        // opacity: opacity == 0 ? 1.0 : (opacity ?? 1.0),
-        child: Text(
-          '$value',
-          style: TextStyle(color: Colors.white, fontSize: 40),
+      child: Text(
+        '$value',
+        style: TextStyle(
+          color: Colors.white.withOpacity(opacity ?? 1.0),
+          fontSize: 40,
         ),
       ),
     );
