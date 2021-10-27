@@ -1,0 +1,1 @@
+start cmd /k "flutter pub run build_runner watch"
