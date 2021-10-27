@@ -49,9 +49,9 @@ class _SlideClockState extends State<SlideClock>
       ..addStatusListener((status) {
         print(status);
         if (status == AnimationStatus.completed) {
+          controller.reset();
           running = false;
           setState(() {});
-          controller.reset();
         }
       })
       ..addListener(() {
@@ -64,7 +64,6 @@ class _SlideClockState extends State<SlideClock>
       curve: Curves.ease,
     ))
       ..addListener(() {
-        print(animation.value);
         setState(() {});
       });
   }
