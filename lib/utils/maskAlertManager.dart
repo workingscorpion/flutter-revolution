@@ -37,10 +37,6 @@ class MaskAlertManager {
       print(overlayEntry);
     });
   }
-
-  // static clearMaskAlert(){
-  //   OverlayEntry()
-  // }
 }
 
 class MaskAlert extends StatefulWidget {
