@@ -1,8 +1,14 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/flutter_svg.dart';
 import 'package:revolution/appRouter.dart';
+import 'package:revolution/utils/lazy.dart';
 
 class MaskAlertManager {
+  static final Lazy<MaskAlertManager> _lazy =
+      Lazy<MaskAlertManager>(() => MaskAlertManager());
+  static MaskAlertManager get instance => _lazy.value;
+  static OverlayEntry overlayEntry;
+
   static showMaskAlert({
     BuildContext context,
     IconData icon,
@@ -10,8 +16,12 @@ class MaskAlertManager {
     String image,
     Color color,
   }) async {
+    if (overlayEntry != null) {
+      overlayEntry.remove();
+      overlayEntry = null;
+    }
     final _duration = duration ?? Duration(milliseconds: 1000);
-    final overlayEntry = OverlayEntry(
+    overlayEntry = OverlayEntry(
       builder: (context) => MaskAlert(
         icon: icon,
         duration: _duration,
@@ -19,9 +29,18 @@ class MaskAlertManager {
         color: color,
       ),
     );
+    print(overlayEntry);
     Overlay.of(context).insert(overlayEntry);
-    Future.delayed(_duration, () => overlayEntry.remove());
+    Future.delayed(_duration, () {
+      overlayEntry?.remove();
+      overlayEntry = null;
+      print(overlayEntry);
+    });
   }
+
+  // static clearMaskAlert(){
+  //   OverlayEntry()
+  // }
 }
 
 class MaskAlert extends StatefulWidget {
