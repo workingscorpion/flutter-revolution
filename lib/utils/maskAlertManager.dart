@@ -13,6 +13,7 @@ class MaskAlertManager {
     await showDialog(
       context: context,
       barrierColor: Colors.transparent,
+      barrierDismissible: true,
       child: MaskAlert(
         icon: icon,
         duration: duration ?? Duration(milliseconds: 1000),
@@ -52,17 +53,22 @@ class _MaskAlertState extends State<MaskAlert>
   @override
   void initState() {
     super.initState();
-    controller = AnimationController(duration: widget.duration, vsync: this);
+    controller = AnimationController(duration: widget.duration, vsync: this)
+      ..addStatusListener((status) {
+        print(status);
+        if (status == AnimationStatus.completed) {
+          AppRouter.pop();
+        }
+      });
     animation = Tween(begin: 0.0, end: 1.0).animate(
       CurvedAnimation(
         parent: controller,
-        curve: Interval(0.6, 0.8),
+        curve: Interval(0.4, 0.6),
       ),
     )..addListener(() {
         setState(() {});
       });
 
-    Future.delayed(widget.duration, () => AppRouter.pop());
     controller.forward();
   }
 
@@ -76,39 +82,42 @@ class _MaskAlertState extends State<MaskAlert>
 
   @override
   Widget build(BuildContext context) {
-    return Material(
-      color: Colors.transparent,
-      child: Center(
-        child: Container(
-          child: AnimatedBuilder(
-            animation: animation,
-            builder: (context, child) => Opacity(
-              opacity: 1 - animation.value,
-              child: Container(
-                padding: EdgeInsets.all(10 * (animation.value + 1)),
-                // width: size.width * .2 * (animation.value + 1),
-                // height: size.width * .2 * (animation.value + 1),
-                decoration: BoxDecoration(
-                  shape: BoxShape.circle,
-                  color: Colors.black.withOpacity(.3),
-                ),
-                child: widget.image != null
-                    ? Container(
-                        child: SvgPicture.asset(
-                          widget.image,
-                          color: widget.color,
-                          width: 60 * (animation.value + 1),
-                          height: 60 * (animation.value + 1),
+    return Dialog(
+      elevation: 0,
+      backgroundColor: Colors.transparent,
+      child: IntrinsicHeight(
+        child: Center(
+          child: Container(
+            child: AnimatedBuilder(
+              animation: animation,
+              builder: (context, child) => Opacity(
+                opacity: 1 - animation.value,
+                child: Container(
+                  padding: EdgeInsets.all(10 * (animation.value + 1)),
+                  // width: size.width * .2 * (animation.value + 1),
+                  // height: size.width * .2 * (animation.value + 1),
+                  decoration: BoxDecoration(
+                    shape: BoxShape.circle,
+                    color: Colors.black.withOpacity(.3),
+                  ),
+                  child: widget.image != null
+                      ? Container(
+                          child: SvgPicture.asset(
+                            widget.image,
+                            color: widget.color,
+                            width: 60 * (animation.value + 1),
+                            height: 60 * (animation.value + 1),
+                          ),
+                        )
+                      : Icon(
+                          widget.icon,
+                          color: Colors.white,
+                          size: 60 * (animation.value + 1),
                         ),
-                      )
-                    : Icon(
-                        widget.icon,
-                        color: Colors.white,
-                        size: 60 * (animation.value + 1),
-                      ),
+                ),
               ),
+              child: child(),
             ),
-            child: child(),
           ),
         ),
       ),
