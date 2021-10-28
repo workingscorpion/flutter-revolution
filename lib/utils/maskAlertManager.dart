@@ -10,17 +10,17 @@ class MaskAlertManager {
     String image,
     Color color,
   }) async {
-    await showDialog(
-      context: context,
-      barrierColor: Colors.transparent,
-      barrierDismissible: true,
-      child: MaskAlert(
+    final _duration = duration ?? Duration(milliseconds: 1000);
+    final overlayEntry = OverlayEntry(
+      builder: (context) => MaskAlert(
         icon: icon,
-        duration: duration ?? Duration(milliseconds: 1000),
+        duration: _duration,
         image: image,
         color: color,
       ),
     );
+    Overlay.of(context).insert(overlayEntry);
+    Future.delayed(_duration, () => overlayEntry.remove());
   }
 }
 
@@ -82,9 +82,7 @@ class _MaskAlertState extends State<MaskAlert>
 
   @override
   Widget build(BuildContext context) {
-    return Dialog(
-      elevation: 0,
-      backgroundColor: Colors.transparent,
+    return Container(
       child: IntrinsicHeight(
         child: Center(
           child: Container(
@@ -94,8 +92,6 @@ class _MaskAlertState extends State<MaskAlert>
                 opacity: 1 - animation.value,
                 child: Container(
                   padding: EdgeInsets.all(10 * (animation.value + 1)),
-                  // width: size.width * .2 * (animation.value + 1),
-                  // height: size.width * .2 * (animation.value + 1),
                   decoration: BoxDecoration(
                     shape: BoxShape.circle,
                     color: Colors.black.withOpacity(.3),
