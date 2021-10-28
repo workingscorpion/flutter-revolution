@@ -1,13 +1,28 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_svg/flutter_svg.dart';
 import 'package:revolution/utils/maskAlertManager.dart';
 
-class MaskAlertPage extends StatelessWidget {
-  const MaskAlertPage({Key key}) : super(key: key);
+class MaskAlertPage extends StatefulWidget {
+  MaskAlertPage({Key key}) : super(key: key);
 
-  showMaskAlert(BuildContext context, IconData icon) async {
+  @override
+  _MaskAlertPageState createState() => _MaskAlertPageState();
+}
+
+class _MaskAlertPageState extends State<MaskAlertPage> {
+  bool like = false;
+
+  showMaskAlert({
+    BuildContext context,
+    IconData icon,
+    String image,
+    Color color,
+  }) async {
     MaskAlertManager.showMaskAlert(
       context: context,
       icon: icon,
+      image: image,
+      color: color,
     );
   }
 
@@ -19,7 +34,7 @@ class MaskAlertPage extends StatelessWidget {
           mainAxisAlignment: MainAxisAlignment.center,
           children: [
             GestureDetector(
-              onTap: () => showMaskAlert(context, Icons.check),
+              onTap: () => showMaskAlert(context: context, icon: Icons.check),
               child: Container(
                 padding: EdgeInsets.all(10),
                 decoration: BoxDecoration(
@@ -38,7 +53,7 @@ class MaskAlertPage extends StatelessWidget {
             ),
             Container(width: 30),
             GestureDetector(
-              onTap: () => showMaskAlert(context, Icons.close),
+              onTap: () => showMaskAlert(context: context, icon: Icons.close),
               child: Container(
                 padding: EdgeInsets.all(10),
                 decoration: BoxDecoration(
@@ -52,6 +67,38 @@ class MaskAlertPage extends StatelessWidget {
                   Icons.close,
                   color: Colors.black54,
                   size: 30,
+                ),
+              ),
+            ),
+            Container(width: 30),
+            GestureDetector(
+              onTap: () {
+                like = !like;
+                setState(() {});
+                showMaskAlert(
+                  context: context,
+                  color: Colors.red,
+                  image: like
+                      ? 'assets/components/heart.svg'
+                      : 'assets/components/heart_empty.svg',
+                );
+              },
+              child: Container(
+                padding: EdgeInsets.all(10),
+                decoration: BoxDecoration(
+                  shape: BoxShape.circle,
+                  border: Border.all(
+                    color: Colors.black54,
+                    width: 1,
+                  ),
+                ),
+                child: SvgPicture.asset(
+                  like
+                      ? 'assets/components/heart.svg'
+                      : 'assets/components/heart_empty.svg',
+                  color: Colors.red,
+                  height: 30,
+                  width: 30,
                 ),
               ),
             ),

@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_svg/flutter_svg.dart';
 import 'package:revolution/appRouter.dart';
 
 class MaskAlertManager {
@@ -6,23 +7,34 @@ class MaskAlertManager {
     BuildContext context,
     IconData icon,
     Duration duration,
+    String image,
+    Color color,
   }) async {
     await showDialog(
       context: context,
       barrierColor: Colors.transparent,
       child: MaskAlert(
         icon: icon,
-        duration: duration ?? Duration(milliseconds: 500),
+        duration: duration ?? Duration(milliseconds: 1000),
+        image: image,
+        color: color,
       ),
     );
   }
 }
 
 class MaskAlert extends StatefulWidget {
-  MaskAlert({this.icon, this.duration});
+  MaskAlert({
+    this.icon,
+    this.duration,
+    this.image,
+    this.color,
+  });
 
   final IconData icon;
   final Duration duration;
+  final String image;
+  final Color color;
 
   @override
   _MaskAlertState createState() => _MaskAlertState();
@@ -44,7 +56,7 @@ class _MaskAlertState extends State<MaskAlert>
     animation = Tween(begin: 0.0, end: 1.0).animate(
       CurvedAnimation(
         parent: controller,
-        curve: Interval(0.5, 1.0),
+        curve: Interval(0.6, 0.8),
       ),
     )..addListener(() {
         setState(() {});
@@ -73,17 +85,27 @@ class _MaskAlertState extends State<MaskAlert>
             builder: (context, child) => Opacity(
               opacity: 1 - animation.value,
               child: Container(
-                width: size.width * .15 * (animation.value + 1),
-                height: size.width * .15 * (animation.value + 1),
+                padding: EdgeInsets.all(10 * (animation.value + 1)),
+                // width: size.width * .2 * (animation.value + 1),
+                // height: size.width * .2 * (animation.value + 1),
                 decoration: BoxDecoration(
                   shape: BoxShape.circle,
                   color: Colors.black.withOpacity(.3),
                 ),
-                child: Icon(
-                  widget.icon,
-                  color: Colors.white,
-                  size: 30 * (animation.value + 1),
-                ),
+                child: widget.image != null
+                    ? Container(
+                        child: SvgPicture.asset(
+                          widget.image,
+                          color: widget.color,
+                          width: 60 * (animation.value + 1),
+                          height: 60 * (animation.value + 1),
+                        ),
+                      )
+                    : Icon(
+                        widget.icon,
+                        color: Colors.white,
+                        size: 60 * (animation.value + 1),
+                      ),
               ),
             ),
             child: child(),
