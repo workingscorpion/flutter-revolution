@@ -68,13 +68,7 @@ class _MaskAlertState extends State<MaskAlert>
   @override
   void initState() {
     super.initState();
-    controller = AnimationController(duration: widget.duration, vsync: this)
-      ..addStatusListener((status) {
-        print(status);
-        if (status == AnimationStatus.completed) {
-          AppRouter.pop();
-        }
-      });
+    controller = AnimationController(duration: widget.duration, vsync: this);
     animation = Tween(begin: 0.0, end: 1.0).animate(
       CurvedAnimation(
         parent: controller,
