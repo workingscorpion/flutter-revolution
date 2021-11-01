@@ -41,6 +41,7 @@ class _UIPageState extends State<UIPage> {
                 TimerButton(),
                 TicketButton(),
                 MaskAlertButton(),
+                // TODO: custom carousel with align
                 // TODO: number sliding animation with formatting
                 // TODO: 토스트 자체 제작
                 // TODO: snackbar
