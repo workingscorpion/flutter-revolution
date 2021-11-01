@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 
-class Carousel extends StatefulWidget {
-  Carousel({
+class PageViewCarousel extends StatefulWidget {
+  PageViewCarousel({
     this.title,
     this.items,
     this.initialIndex,
@@ -12,10 +12,10 @@ class Carousel extends StatefulWidget {
   final int initialIndex;
 
   @override
-  _CarouselState createState() => _CarouselState();
+  _PageViewCarouselState createState() => _PageViewCarouselState();
 }
 
-class _CarouselState extends State<Carousel> {
+class _PageViewCarouselState extends State<PageViewCarousel> {
   final controller = PageController(
     viewportFraction: .74,
   );

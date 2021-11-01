@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
-import 'package:revolution/components/carousel.dart';
+import 'package:revolution/components/listviewCarousel.dart';
+import 'package:revolution/components/pageviewCarousel.dart';
 import 'package:revolution/components/customBox.dart';
 
 class CarouselPage extends StatefulWidget {
@@ -26,7 +27,7 @@ class _CarouselPageState extends State<CarouselPage> {
   @override
   void initState() {
     list = List.generate(
-      10,
+      5,
       (index) => CarouselItem(
         title: titles(index),
         image: '$storage${titles(index)}.jpg',
@@ -45,9 +46,19 @@ class _CarouselPageState extends State<CarouselPage> {
           physics: ClampingScrollPhysics(),
           children: [
             CustomBox(
-              // title: 'Carousel Slider',
-              child: Carousel(
-                title: 'Carousel Slider',
+              // title: 'ListView Carousel',
+              child: ListViewCarousel(
+                title: 'ListView Carousel',
+                items: list.map((e) => image(e)).toList(),
+                initialIndex: 0,
+                width: 256,
+                margin: 15,
+              ),
+            ),
+            CustomBox(
+              // title: 'PageView Carousel',
+              child: PageViewCarousel(
+                title: 'PageView Carousel',
                 items: list.map((e) => item(e)).toList(),
                 initialIndex: 0,
               ),
@@ -57,6 +68,17 @@ class _CarouselPageState extends State<CarouselPage> {
       ),
     );
   }
+
+  Widget image(CarouselItem e) => Container(
+        margin: EdgeInsets.only(right: 15),
+        child: Image.network(
+          e.image,
+          fit: BoxFit.cover,
+          width: 256,
+          height: 256,
+          alignment: Alignment.centerLeft,
+        ),
+      );
 
   Widget item(CarouselItem e) => IntrinsicWidth(
         child: Container(
