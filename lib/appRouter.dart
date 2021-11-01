@@ -2,6 +2,7 @@ import 'package:revolution/constants/routeNames.dart';
 import 'package:revolution/pages/function/infiniteScroll.dart';
 import 'package:revolution/pages/home/home.dart';
 import 'package:revolution/pages/splash.dart';
+import 'package:revolution/pages/ui/carousel.dart';
 import 'package:revolution/pages/ui/maskAlert.dart';
 import 'package:revolution/pages/ui/progress.dart';
 import 'package:revolution/pages/ui/progressIndicator.dart';
@@ -26,6 +27,7 @@ class AppRouter {
           builder: (BuildContext context) => HomePage(),
         );
 
+      // UI
       case RouteNames.Progress:
         return CupertinoPageRoute(
           settings: settings,
@@ -56,6 +58,13 @@ class AppRouter {
           builder: (BuildContext context) => MaskAlertPage(),
         );
 
+      case RouteNames.Carousel:
+        return CupertinoPageRoute(
+          settings: settings,
+          builder: (BuildContext context) => CarouselPage(),
+        );
+
+      // Function
       case RouteNames.InfiniteScroll:
         return CupertinoPageRoute(
           settings: settings,
@@ -81,6 +90,7 @@ class AppRouter {
         .pushNamedAndRemoveUntil(RouteNames.Home, (Route route) => false);
   }
 
+  // UI
   static toProgressPage() {
     return Navigator.of(context).pushNamed(RouteNames.Progress);
   }
@@ -101,6 +111,11 @@ class AppRouter {
     return Navigator.of(context).pushNamed(RouteNames.MaskAlert);
   }
 
+  static toCarouselPage() {
+    return Navigator.of(context).pushNamed(RouteNames.Carousel);
+  }
+
+  // Function
   static toInifiteScrollPage() {
     return Navigator.of(context).pushNamed(RouteNames.InfiniteScroll);
   }

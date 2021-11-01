@@ -33,7 +33,7 @@ class CustomBox extends StatelessWidget {
                       child: Icon(icon),
                     )
                   : Container(),
-              Text(title),
+              title != null ? Text(title) : Container(),
             ],
           ),
         ),

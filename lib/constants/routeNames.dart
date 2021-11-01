@@ -10,6 +10,7 @@ class RouteNames {
   static const String Timer = '/timer';
   static const String Ticket = '/ticket';
   static const String MaskAlert = '/mask-alert';
+  static const String Carousel = '/carousel';
 
   // function
   static const String InfiniteScroll = '/infinite';
