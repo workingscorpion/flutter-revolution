@@ -43,12 +43,12 @@ class _UIPageState extends State<UIPage> {
                 TicketButton(),
                 MaskAlertButton(),
                 CarouselButton(),
-                // TODO: custom carousel with align
                 // TODO: number sliding animation with formatting
                 // TODO: 토스트 자체 제작
                 // TODO: snackbar
                 // TODO: custom switch(from 유진쓰)
                 // TODO: 고정된 component 사이에 자동으로 margin 주는 ui(마지막은 margin 없게)
+                // TODO: chatting ui
               ],
             ),
           ),
