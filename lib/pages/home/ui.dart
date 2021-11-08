@@ -1,4 +1,5 @@
 import 'package:revolution/components/buttons/carousel.dart';
+import 'package:revolution/components/buttons/chat.dart';
 import 'package:revolution/components/buttons/maskAlert.dart';
 import 'package:revolution/components/buttons/progressBar.dart';
 import 'package:revolution/components/buttons/progressIndicator.dart';
@@ -22,7 +23,6 @@ class _UIPageState extends State<UIPage> {
         padding: EdgeInsets.symmetric(horizontal: 25, vertical: 20),
         children: [
           StickyHeader(
-            // overlapHeaders: ,
             header: Container(
               height: 50.0,
               margin: EdgeInsets.only(bottom: 10),
@@ -36,6 +36,7 @@ class _UIPageState extends State<UIPage> {
             ),
             content: ListView(
               shrinkWrap: true,
+              physics: ClampingScrollPhysics(),
               children: [
                 ProgressBarButton(),
                 ProgressIndicatorButton(),
@@ -43,6 +44,7 @@ class _UIPageState extends State<UIPage> {
                 TicketButton(),
                 MaskAlertButton(),
                 CarouselButton(),
+                ChatButton(),
                 // TODO: number sliding animation with formatting
                 // TODO: 토스트 자체 제작
                 // TODO: snackbar

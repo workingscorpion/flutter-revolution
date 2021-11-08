@@ -3,6 +3,7 @@ import 'package:revolution/pages/function/infiniteScroll.dart';
 import 'package:revolution/pages/home/home.dart';
 import 'package:revolution/pages/splash.dart';
 import 'package:revolution/pages/ui/carousel.dart';
+import 'package:revolution/pages/ui/chat.dart';
 import 'package:revolution/pages/ui/maskAlert.dart';
 import 'package:revolution/pages/ui/progress.dart';
 import 'package:revolution/pages/ui/progressIndicator.dart';
@@ -64,6 +65,12 @@ class AppRouter {
           builder: (BuildContext context) => CarouselPage(),
         );
 
+      case RouteNames.Chat:
+        return CupertinoPageRoute(
+          settings: settings,
+          builder: (BuildContext context) => ChatPage(),
+        );
+
       // Function
       case RouteNames.InfiniteScroll:
         return CupertinoPageRoute(
@@ -113,6 +120,10 @@ class AppRouter {
 
   static toCarouselPage() {
     return Navigator.of(context).pushNamed(RouteNames.Carousel);
+  }
+
+  static toChatPage() {
+    return Navigator.of(context).pushNamed(RouteNames.Chat);
   }
 
   // Function

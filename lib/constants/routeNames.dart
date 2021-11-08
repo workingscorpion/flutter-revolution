@@ -11,6 +11,7 @@ class RouteNames {
   static const String Ticket = '/ticket';
   static const String MaskAlert = '/mask-alert';
   static const String Carousel = '/carousel';
+  static const String Chat = '/chat';
 
   // function
   static const String InfiniteScroll = '/infinite';
