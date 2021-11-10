@@ -6,6 +6,7 @@ import 'package:revolution/pages/ui/carousel.dart';
 import 'package:revolution/pages/ui/maskAlert.dart';
 import 'package:revolution/pages/ui/progress.dart';
 import 'package:revolution/pages/ui/progressIndicator.dart';
+import 'package:revolution/pages/ui/roulette.dart';
 import 'package:revolution/pages/ui/ticket.dart';
 import 'package:revolution/store/navigationStore.dart';
 import 'package:revolution/pages/ui/timer.dart';
@@ -64,6 +65,12 @@ class AppRouter {
           builder: (BuildContext context) => CarouselPage(),
         );
 
+      case RouteNames.Roulette:
+        return CupertinoPageRoute(
+          settings: settings,
+          builder: (BuildContext context) => RoulettePage(),
+        );
+
       // Function
       case RouteNames.InfiniteScroll:
         return CupertinoPageRoute(
@@ -113,6 +120,10 @@ class AppRouter {
 
   static toCarouselPage() {
     return Navigator.of(context).pushNamed(RouteNames.Carousel);
+  }
+
+  static toRoulettePage() {
+    return Navigator.of(context).pushNamed(RouteNames.Roulette);
   }
 
   // Function
