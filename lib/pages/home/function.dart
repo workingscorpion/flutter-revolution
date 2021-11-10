@@ -1,6 +1,8 @@
 import 'package:revolution/components/buttons/bioAuth.dart';
 import 'package:flutter/material.dart';
 import 'package:revolution/components/buttons/infiniteScroll.dart';
+import 'package:revolution/components/buttons/qr.dart';
+import 'package:revolution/components/buttons/qrscan.dart';
 import 'package:sticky_headers/sticky_headers.dart';
 
 class FunctionPage extends StatefulWidget {
@@ -35,6 +37,8 @@ class _FunctionPageState extends State<FunctionPage> {
               children: [
                 BioAuthButton(),
                 InfiniteScrollButton(),
+                QRButton(),
+                QRScanButton(),
               ],
             ),
           ),

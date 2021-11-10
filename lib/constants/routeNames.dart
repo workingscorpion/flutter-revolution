@@ -14,4 +14,7 @@ class RouteNames {
 
   // function
   static const String InfiniteScroll = '/infinite';
+  static const String QR = '/qr';
+  static const String QRScan = '/qr/scan';
+  static const String ScanCamera = '/qr/scan/camera';
 }

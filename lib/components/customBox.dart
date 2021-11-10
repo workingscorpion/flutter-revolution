@@ -37,9 +37,7 @@ class CustomBox extends StatelessWidget {
             ],
           ),
         ),
-        content: Center(
-          child: child,
-        ),
+        content: Center(child: child),
       ),
     );
   }

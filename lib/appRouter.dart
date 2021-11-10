@@ -1,5 +1,8 @@
 import 'package:revolution/constants/routeNames.dart';
 import 'package:revolution/pages/function/infiniteScroll.dart';
+import 'package:revolution/pages/function/qr.dart';
+import 'package:revolution/pages/function/qrscan.dart';
+import 'package:revolution/pages/function/scanCamera.dart';
 import 'package:revolution/pages/home/home.dart';
 import 'package:revolution/pages/splash.dart';
 import 'package:revolution/pages/ui/carousel.dart';
@@ -71,6 +74,24 @@ class AppRouter {
           builder: (BuildContext context) => InfiniteScrollPage(),
         );
 
+      case RouteNames.QR:
+        return CupertinoPageRoute(
+          settings: settings,
+          builder: (BuildContext context) => QRPage(),
+        );
+
+      case RouteNames.QRScan:
+        return CupertinoPageRoute(
+          settings: settings,
+          builder: (BuildContext context) => QRScanPage(),
+        );
+
+      case RouteNames.ScanCamera:
+        return CupertinoPageRoute(
+          settings: settings,
+          builder: (BuildContext context) => ScanCameraPage(),
+        );
+
       default:
         return CupertinoPageRoute(
           settings: settings,
@@ -83,6 +104,10 @@ class AppRouter {
 
   static pop() {
     return Navigator.of(context).pop();
+  }
+
+  static valuePop(String value) {
+    return Navigator.of(context).pop(value);
   }
 
   static toHomePage() {
@@ -118,5 +143,17 @@ class AppRouter {
   // Function
   static toInifiteScrollPage() {
     return Navigator.of(context).pushNamed(RouteNames.InfiniteScroll);
+  }
+
+  static toQRPage() {
+    return Navigator.of(context).pushNamed(RouteNames.QR);
+  }
+
+  static toQRScanPage() {
+    return Navigator.of(context).pushNamed(RouteNames.QRScan);
+  }
+
+  static toScanCameraPage() {
+    return Navigator.of(context).pushNamed(RouteNames.ScanCamera);
   }
 }
