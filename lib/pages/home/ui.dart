@@ -21,38 +21,20 @@ class _UIPageState extends State<UIPage> {
       child: ListView(
         padding: EdgeInsets.symmetric(horizontal: 25, vertical: 20),
         children: [
-          StickyHeader(
-            // overlapHeaders: ,
-            header: Container(
-              height: 50.0,
-              margin: EdgeInsets.only(bottom: 10),
-              alignment: Alignment.centerLeft,
-              child: Row(
-                children: [
-                  Icon(Icons.design_services),
-                  Text('UI'),
-                ],
-              ),
-            ),
-            content: ListView(
-              shrinkWrap: true,
-              children: [
-                ProgressBarButton(),
-                ProgressIndicatorButton(),
-                TimerButton(),
-                TicketButton(),
-                MaskAlertButton(),
+          ProgressBarButton(),
+          ProgressIndicatorButton(),
+          TimerButton(),
+          TicketButton(),
+          MaskAlertButton(),
+          CarouselButton(),
+          RouletteButton(),
+          // TODO: number sliding animation with formatting
+          // TODO: 토스트 자체 제작
+          // TODO: snackbar
+          // TODO: custom switch(from 유진쓰)
+          // TODO: 고정된 component 사이에 자동으로 margin 주는 ui(마지막은 margin 없게)
+          // TODO: chatting ui
                 // TODO: carousel like medium icon(3d)
-                CarouselButton(),
-                // TODO: number sliding animation with formatting
-                // TODO: 토스트 자체 제작
-                // TODO: snackbar
-                // TODO: custom switch(from 유진쓰)
-                // TODO: 고정된 component 사이에 자동으로 margin 주는 ui(마지막은 margin 없게)
-                // TODO: chatting ui
-              ],
-            ),
-          ),
         ],
       ),
     );

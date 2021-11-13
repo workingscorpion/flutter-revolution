@@ -17,27 +17,9 @@ class _FunctionPageState extends State<FunctionPage> {
       child: ListView(
         padding: EdgeInsets.symmetric(horizontal: 25, vertical: 20),
         children: [
-          StickyHeader(
-            // overlapHeaders: ,
-            header: Container(
-              height: 50.0,
-              margin: EdgeInsets.only(bottom: 10),
-              alignment: Alignment.centerLeft,
-              child: Row(
-                children: [
-                  Icon(Icons.functions),
-                  Text('Function'),
-                ],
-              ),
-            ),
-            content: ListView(
-              shrinkWrap: true,
-              children: [
-                BioAuthButton(),
-                InfiniteScrollButton(),
-              ],
-            ),
-          ),
+          BioAuthButton(),
+          InfiniteScrollButton(),
+          // TODO: advertisement(ex. tapjoy, iron-source)
         ],
       ),
     );
