@@ -2,6 +2,7 @@ import 'package:revolution/components/buttons/carousel.dart';
 import 'package:revolution/components/buttons/maskAlert.dart';
 import 'package:revolution/components/buttons/progressBar.dart';
 import 'package:revolution/components/buttons/progressIndicator.dart';
+import 'package:revolution/components/buttons/roulette.dart';
 import 'package:revolution/components/buttons/timer.dart';
 import 'package:revolution/components/buttons/ticket.dart';
 import 'package:flutter/material.dart';
@@ -27,7 +28,7 @@ class _UIPageState extends State<UIPage> {
           TicketButton(),
           MaskAlertButton(),
           CarouselButton(),
-          // RouletteButton(),
+          RouletteButton(),
           // TODO: scratch 복권
           // TODO: number sliding animation with formatting
           // TODO: 토스트 자체 제작
