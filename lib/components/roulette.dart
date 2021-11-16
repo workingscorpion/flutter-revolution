@@ -1,10 +1,25 @@
 import 'dart:math';
 
 import 'package:flutter/material.dart';
+import 'package:revolution/model/rouletteData.dart';
 import 'package:vector_math/vector_math.dart' as vectorMath;
 
 class Roulette extends StatefulWidget {
-  Roulette({Key key}) : super(key: key);
+  Roulette({
+    this.data,
+    this.width = 200,
+    this.height = 200,
+    this.spinCount = 7.0,
+    this.duration,
+    this.onEnd,
+  });
+
+  final List<RouletteData> data;
+  final double width;
+  final double height;
+  final double spinCount;
+  final Duration duration;
+  final Function(RouletteData) onEnd;
 
   @override
   _RouletteState createState() => _RouletteState();
@@ -13,6 +28,8 @@ class Roulette extends StatefulWidget {
 class _RouletteState extends State<Roulette>
     with SingleTickerProviderStateMixin {
   AnimationController controller;
+  double endValue;
+  RouletteData selectedItem;
 
   @override
   void initState() {
@@ -21,18 +38,29 @@ class _RouletteState extends State<Roulette>
   }
 
   setController() {
-    controller =
-        AnimationController(duration: Duration(milliseconds: 2000), vsync: this)
-          ..addStatusListener((status) {
-            if (status == AnimationStatus.completed) {
-              controller.reset();
-            }
-          });
+    controller = AnimationController(
+        duration: widget.duration ?? Duration(milliseconds: 6000), vsync: this);
   }
 
   spin() {
-    // TODO: random
+    controller.reset();
+    final _randomValue = Random().nextInt(1000);
+    endValue = widget.spinCount + _randomValue * 0.001;
+    final value = _randomValue * 0.1;
+
+    double minimum = 0.0;
+    double maximum = 0.0;
+    for (var datum in widget.data) {
+      maximum += datum.percent;
+      if (value >= minimum && value < maximum) {
+        selectedItem = datum;
+      }
+      minimum += datum.percent;
+    }
+    setState(() {});
     controller.forward();
+    Future.delayed((widget.duration ?? Duration(milliseconds: 6000)),
+        () => widget.onEnd(selectedItem));
   }
 
   @override
@@ -40,7 +68,13 @@ class _RouletteState extends State<Roulette>
     return GestureDetector(
       onTap: () => spin(),
       child: RotationTransition(
-        turns: Tween(begin: 0.0, end: 3.0).animate(controller),
+        turns: Tween(
+          begin: 0.0,
+          end: (endValue ?? 0.0) * -1,
+        ).animate(CurvedAnimation(
+          parent: controller,
+          curve: Curves.easeInOutCubic,
+        )),
         child: roulette(),
       ),
     );
@@ -48,16 +82,18 @@ class _RouletteState extends State<Roulette>
 
   roulette() => Container(
         child: CustomPaint(
-          size: Size(150, 150),
-          painter: RoulettePainter(percent: 12.5),
+          size: Size(widget.width, widget.height),
+          painter: RoulettePainter(
+            data: widget.data,
+          ),
         ),
       );
 }
 
 class RoulettePainter extends CustomPainter {
-  RoulettePainter({this.percent});
+  RoulettePainter({this.data});
 
-  final double percent;
+  final List<RouletteData> data;
 
   @override
   void paint(Canvas canvas, Size size) {
@@ -66,7 +102,7 @@ class RoulettePainter extends CustomPainter {
     canvas.rotate(vectorMath.radians(-90.0));
 
     Paint emptyPaint = Paint()
-      ..color = Colors.blue
+      // ..color = Colors.blue
       ..strokeWidth = size.width / 3
       // ..strokeWidth = 50
       ..style = PaintingStyle.stroke;
@@ -85,18 +121,14 @@ class RoulettePainter extends CustomPainter {
     canvas.drawCircle(center, radius, emptyPaint);
 
     var previousArc = 0.0;
-    for (var i = 0; i < 100 / percent; i++) {
+    for (var datum in data) {
       Paint paint = Paint()
         ..strokeCap = emptyPaint.strokeCap
         ..strokeWidth = emptyPaint.strokeWidth
         ..style = emptyPaint.style
         ..strokeCap = emptyPaint.strokeCap
-        ..color = i % 2 == 1 ? Colors.red : Colors.yellow;
-
-      double arcAngle = 2 * pi * (percent / 100);
-      // double arcAngle = 2 * pi * (percent / 100);
-
-      // paint..color = ;
+        ..color = datum.color;
+      double arcAngle = 2 * pi * (datum.percent / 100);
 
       canvas.drawArc(
         Rect.fromCircle(
@@ -109,17 +141,14 @@ class RoulettePainter extends CustomPainter {
         false,
         paint,
       );
-      previousArc = (2 * pi * (percent / 100) * (i + 1));
-      print(previousArc);
-    }
 
+      previousArc += arcAngle;
+    }
     canvas.restore();
   }
 
   @override
   bool shouldRepaint(RoulettePainter oldDelegate) {
-    // return old.percent != percent;
-    return oldDelegate.percent != percent;
-    // throw UnimplementedError();
+    return oldDelegate.data != data;
   }
 }
