@@ -119,6 +119,7 @@ class RoulettePainter extends CustomPainter {
   @override
   bool shouldRepaint(RoulettePainter oldDelegate) {
     // return old.percent != percent;
-    throw UnimplementedError();
+    return oldDelegate.percent != percent;
+    // throw UnimplementedError();
   }
 }
