@@ -3,7 +3,7 @@ import 'package:revolution/constants/lotteryType.dart';
 
 class Lottery extends StatefulWidget {
   Lottery({
-    this.value = "Bang",
+    this.value = "You Lose",
     this.type = LotteryType.TEXT,
   });
 

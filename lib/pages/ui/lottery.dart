@@ -39,14 +39,12 @@ class LotteryPage extends StatelessWidget {
             CustomBox(
               title: 'Basic Lottery',
               child: Lottery(
-                value: '20',
+                value: 'You won \$20',
               ),
             ),
             CustomBox(
               title: 'Image Lottery',
-              child: Lottery(
-                  // value: '20',
-                  ),
+              child: Lottery(),
             ),
           ],
         ),
