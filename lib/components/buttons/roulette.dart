@@ -9,7 +9,7 @@ class RouletteButton extends StatelessWidget {
   Widget build(BuildContext context) {
     return CustomButton(
       text: 'Roulette',
-      image: 'assets/home/carousel.png',
+      image: 'assets/home/roulette.png',
       onTap: () => AppRouter.toRoulettePage(),
     );
   }
