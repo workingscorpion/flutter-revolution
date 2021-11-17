@@ -23,13 +23,15 @@ class LotteryPage extends StatelessWidget {
                   threshold: 50,
                   brushSize: 30,
                   color: Colors.grey,
-                  onChange: (double value) async {
-                    if (value > 50.0) {
-                      // await showAlert();
-                      print('Congraturation');
-                    }
+                  // image: Image.asset('assets/home/roulette.png'),
+                  // onChange: (double value) async {
+                  //   if (value > 50.0) {
+                  //     // await showAlert();
+                  //   }
+                  // },
+                  onThreshold: () {
+                    print('Congraturation');
                   },
-                  onThreshold: () {},
                   child: Container(
                     height: 300,
                     width: 300,
