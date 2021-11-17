@@ -38,7 +38,7 @@ dependencies:
   fluttertoast: ^7.1.8
   flutter_svg: ^0.19.1
   sticky_headers: ^0.1.8+1
-  flip_panel: ^1.0.1
+  scratcher: ^1.4.2
 
   cupertino_icons: ^1.0.0
 

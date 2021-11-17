@@ -12,6 +12,7 @@ class RouteNames {
   static const String MaskAlert = '/mask-alert';
   static const String Carousel = '/carousel';
   static const String Roulette = '/roulette';
+  static const String Lottery = '/lottery';
 
   // function
   static const String InfiniteScroll = '/infinite';

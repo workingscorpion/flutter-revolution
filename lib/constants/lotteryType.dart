@@ -1,0 +1,4 @@
+enum LotteryType {
+  TEXT,
+  IMAGE,
+}
