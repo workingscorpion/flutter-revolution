@@ -86,11 +86,27 @@ class _RoulettePageState extends State<RoulettePage> {
           padding: EdgeInsets.symmetric(horizontal: 25, vertical: 20),
           children: [
             CustomBox(
-              title: 'Roulette',
+              title: 'Basic Roulette',
               child: Roulette(
                 data: data,
                 onEnd: (RouletteData data) => showResult(data),
               ),
+            ),
+            CustomBox(
+              title: 'Text Roulette',
+              // TODO: Text Roulette
+              // child: Roulette(
+              //   data: data,
+              //   onEnd: (RouletteData data) => showResult(data),
+              // ),
+            ),
+            CustomBox(
+              title: 'Image Roulette',
+              // TODO: Image Roulette
+              // child: Roulette(
+              //   data: data,
+              //   onEnd: (RouletteData data) => showResult(data),
+              // ),
             ),
           ],
         ),
