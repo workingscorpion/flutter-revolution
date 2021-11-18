@@ -1,4 +1,5 @@
 import 'package:revolution/components/buttons/carousel.dart';
+import 'package:revolution/components/buttons/lottery.dart';
 import 'package:revolution/components/buttons/maskAlert.dart';
 import 'package:revolution/components/buttons/progressBar.dart';
 import 'package:revolution/components/buttons/progressIndicator.dart';
@@ -29,7 +30,7 @@ class _UIPageState extends State<UIPage> {
           MaskAlertButton(),
           CarouselButton(),
           RouletteButton(),
-          // TODO: scratch 복권
+          LotteryButton(),
           // TODO: number sliding animation with formatting
           // TODO: 토스트 자체 제작
           // TODO: snackbar
