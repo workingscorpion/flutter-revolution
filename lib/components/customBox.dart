@@ -1,5 +1,4 @@
 import 'package:flutter/material.dart';
-import 'package:sticky_headers/sticky_headers.dart';
 
 class CustomBox extends StatelessWidget {
   const CustomBox({
@@ -21,25 +20,25 @@ class CustomBox extends StatelessWidget {
       ),
       margin: EdgeInsets.only(bottom: 50),
       padding: EdgeInsets.symmetric(horizontal: 10, vertical: 20),
-      child: StickyHeader(
-        header: Container(
-          margin: EdgeInsets.only(bottom: 20),
-          alignment: Alignment.centerLeft,
-          child: Row(
-            children: [
-              icon != null
-                  ? Container(
-                      margin: EdgeInsets.only(right: 5),
-                      child: Icon(icon),
-                    )
-                  : Container(),
-              title != null ? Text(title) : Container(),
-            ],
+      child: Column(
+        children: [
+          Container(
+            margin: EdgeInsets.only(bottom: 20),
+            alignment: Alignment.centerLeft,
+            child: Row(
+              children: [
+                icon != null
+                    ? Container(
+                        margin: EdgeInsets.only(right: 5),
+                        child: Icon(icon),
+                      )
+                    : Container(),
+                title != null ? Text(title) : Container(),
+              ],
+            ),
           ),
-        ),
-        content: Center(
-          child: child,
-        ),
+          Center(child: child),
+        ],
       ),
     );
   }
