@@ -38,16 +38,16 @@ class LotteryPage extends StatelessWidget {
                     child: Image.asset('assets/home/lottery.png'),
                   ),
                 )),
-            CustomBox(
-              title: 'Basic Lottery',
-              child: Lottery(
-                value: 'You won \$20',
-              ),
-            ),
-            CustomBox(
-              title: 'Image Lottery',
-              child: Lottery(),
-            ),
+            // CustomBox(
+            //   title: 'Basic Lottery',
+            //   child: Lottery(
+            //     value: 'You won \$20',
+            //   ),
+            // ),
+            // CustomBox(
+            //   title: 'Image Lottery',
+            //   child: Lottery(),
+            // ),
           ],
         ),
       ),
