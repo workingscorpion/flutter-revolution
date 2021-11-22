@@ -18,7 +18,8 @@ class LotteryPage extends StatelessWidget {
           padding: EdgeInsets.symmetric(horizontal: 25, vertical: 40),
           children: [
             CustomBox(
-                title: 'library Lottery - scratcher',
+              title: 'library Lottery - scratcher',
+              child: SingleChildScrollView(
                 child: Scratcher(
                   threshold: 50,
                   brushSize: 30,
@@ -33,8 +34,8 @@ class LotteryPage extends StatelessWidget {
                     print('Congraturation');
                   },
                   child: Container(
-                    height: 300,
-                    width: 300,
+                    width: 200,
+                    height: 150,
                     child: Image.asset('assets/home/lottery.png'),
                   ),
                 )),
