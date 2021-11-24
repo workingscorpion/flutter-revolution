@@ -1,6 +1,5 @@
 import 'package:flutter/material.dart';
 import 'package:revolution/components/customBox.dart';
-import 'package:revolution/components/lottery.dart';
 import 'package:scratcher/scratcher.dart';
 
 class LotteryPage extends StatelessWidget {

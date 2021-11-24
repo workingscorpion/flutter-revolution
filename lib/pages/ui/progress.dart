@@ -1,7 +1,6 @@
 import 'package:revolution/components/circularProgress.dart';
 import 'package:revolution/components/customBox.dart';
 import 'package:flutter/material.dart';
-import 'package:sticky_headers/sticky_headers/widget.dart';
 
 class ProgressPage extends StatefulWidget {
   ProgressPage({Key key}) : super(key: key);

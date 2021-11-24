@@ -1,5 +1,4 @@
 import 'package:flutter/material.dart';
-import 'package:flutter_mobx/flutter_mobx.dart';
 import 'package:revolution/components/infiniteScroll.dart';
 import 'package:revolution/model/listItem.dart';
 import 'package:revolution/store/infiniteScrollStore.dart';
