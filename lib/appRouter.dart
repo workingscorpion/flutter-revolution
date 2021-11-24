@@ -9,6 +9,7 @@ import 'package:revolution/pages/ui/progress.dart';
 import 'package:revolution/pages/ui/progressIndicator.dart';
 import 'package:revolution/pages/ui/roulette.dart';
 import 'package:revolution/pages/ui/ticket.dart';
+import 'package:revolution/pages/ui/video.dart';
 import 'package:revolution/store/navigationStore.dart';
 import 'package:revolution/pages/ui/timer.dart';
 import 'package:flutter/cupertino.dart';
@@ -78,6 +79,12 @@ class AppRouter {
           builder: (BuildContext context) => LotteryPage(),
         );
 
+      case RouteNames.Video:
+        return CupertinoPageRoute(
+          settings: settings,
+          builder: (BuildContext context) => VideoPage(),
+        );
+
       // Function
       case RouteNames.InfiniteScroll:
         return CupertinoPageRoute(
@@ -135,6 +142,10 @@ class AppRouter {
 
   static toLotteryPage() {
     return Navigator.of(context).pushNamed(RouteNames.Lottery);
+  }
+
+  static toVideoPage() {
+    return Navigator.of(context).pushNamed(RouteNames.Video);
   }
 
   // Function

@@ -13,6 +13,7 @@ class RouteNames {
   static const String Carousel = '/carousel';
   static const String Roulette = '/roulette';
   static const String Lottery = '/lottery';
+  static const String Video = '/video';
 
   // function
   static const String InfiniteScroll = '/infinite';
