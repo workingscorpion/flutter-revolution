@@ -16,4 +16,5 @@ class RouteNames {
 
   // function
   static const String InfiniteScroll = '/infinite';
+  static const String Tapjoy = '/tapjoy';
 }
