@@ -32,7 +32,6 @@ class _UIPageState extends State<UIPage> {
           RouletteButton(),
           LotteryButton(),
           VideoButton(),
-          // TODO: flutter video
           // TODO: number sliding animation with formatting
           // TODO: 토스트 자체 제작
           // TODO: snackbar
