@@ -7,7 +7,7 @@ import 'package:revolution/components/buttons/roulette.dart';
 import 'package:revolution/components/buttons/timer.dart';
 import 'package:revolution/components/buttons/ticket.dart';
 import 'package:flutter/material.dart';
-import 'package:sticky_headers/sticky_headers.dart';
+import 'package:revolution/components/buttons/video.dart';
 
 class UIPage extends StatefulWidget {
   UIPage({Key key}) : super(key: key);
@@ -31,7 +31,7 @@ class _UIPageState extends State<UIPage> {
           CarouselButton(),
           RouletteButton(),
           LotteryButton(),
-          // TODO: flutter video
+          VideoButton(),
           // TODO: number sliding animation with formatting
           // TODO: 토스트 자체 제작
           // TODO: snackbar
