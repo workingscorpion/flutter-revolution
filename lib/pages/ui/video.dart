@@ -29,6 +29,14 @@ class _VideoPageState extends State<VideoPage> {
   }
 
   @override
+  void dispose() {
+    // TODO: implement dispose
+    assetController.dispose();
+    networkController.dispose();
+    super.dispose();
+  }
+
+  @override
   Widget build(BuildContext context) {
     return Scaffold(
       body: SafeArea(
@@ -37,16 +45,16 @@ class _VideoPageState extends State<VideoPage> {
           children: [
             CustomBox(
               title: 'Asset Video',
-              child: AspectRatio(
-                aspectRatio: assetController.value.aspectRatio,
-                child: VideoPlayer(assetController),
+              child: videoController(
+                player: VideoPlayer(assetController),
+                controller: assetController,
               ),
             ),
             CustomBox(
               title: 'Network Video',
-              child: AspectRatio(
-                aspectRatio: networkController.value.aspectRatio,
-                child: VideoPlayer(networkController),
+              child: videoController(
+                player: VideoPlayer(networkController),
+                controller: networkController,
               ),
             ),
           ],
@@ -54,4 +62,39 @@ class _VideoPageState extends State<VideoPage> {
       ),
     );
   }
+
+  videoController({Widget player, VideoPlayerController controller}) =>
+      AspectRatio(
+        aspectRatio: assetController.value.aspectRatio,
+        child: Stack(
+          children: [
+            player,
+            Opacity(
+              opacity: 1,
+              child: GestureDetector(
+                onTap: () async {
+                  print(controller.value.isPlaying);
+                  controller.value.isPlaying
+                      ? await controller.pause()
+                      : await controller.play();
+                  print(controller.value.isPlaying);
+                  setState(() {});
+                },
+                child: Container(
+                  child: Container(
+                    alignment: Alignment.center,
+                    child: Icon(
+                      controller.value.isPlaying
+                          ? Icons.pause
+                          : Icons.play_arrow,
+                      color: Colors.white,
+                      size: 35,
+                    ),
+                  ),
+                ),
+              ),
+            ),
+          ],
+        ),
+      );
 }
