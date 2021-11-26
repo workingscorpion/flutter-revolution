@@ -46,6 +46,7 @@ class _UIPageState extends State<UIPage> {
           // TODO: 특정 조건을 만족하면 실행되는 아이폰 에어드랍 UI 스타일을 가진 에어드랍 이벤트
           // TODO: OX퀴즈 이벤트
           // TODO: text style custom
+          // TODO: 로고 매니저
         ],
       ),
     );
