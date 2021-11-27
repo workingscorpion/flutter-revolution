@@ -1,6 +1,7 @@
 import 'package:revolution/components/buttons/bioAuth.dart';
 import 'package:flutter/material.dart';
 import 'package:revolution/components/buttons/infiniteScroll.dart';
+import 'package:revolution/components/buttons/tapjoy.dart';
 
 class FunctionPage extends StatefulWidget {
   FunctionPage({Key key}) : super(key: key);
@@ -18,6 +19,7 @@ class _FunctionPageState extends State<FunctionPage> {
         children: [
           BioAuthButton(),
           InfiniteScrollButton(),
+          TapjoyButton(),
           // TODO: advertisement(ex. tapjoy, iron-source)
           // TODO: textFormmating
         ],

@@ -33,6 +33,8 @@ dependencies:
   qr_flutter: ^3.2.0
   local_auth: ^0.6.3+4
   vector_math: ^2.0.8
+  # flutter_tapjoy: ^1.2.3+2
+  tap_joy_plugin: ^0.0.7
 
   # ui
   fluttertoast: ^7.1.8
