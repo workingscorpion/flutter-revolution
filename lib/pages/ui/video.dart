@@ -36,7 +36,7 @@ class _VideoPageState extends State<VideoPage> {
         autoPlay: true,
         mute: youtubeMute,
         disableDragSeek: true,
-        loop: false,
+        loop: true,
         isLive: false,
         forceHD: false,
         enableCaption: false,
@@ -104,7 +104,7 @@ class _VideoPageState extends State<VideoPage> {
           mute(),
         ],
         onReady: () => youtubePlayerController.addListener(() {}),
-        onEnded: (_) => youtubePlayerController.pause(),
+        // onEnded: (_) => youtubePlayerController.pause(),
       );
 
   mute() => GestureDetector(
@@ -116,7 +116,6 @@ class _VideoPageState extends State<VideoPage> {
           }
           youtubeMute = !youtubeMute;
           setState(() {});
-          print(youtubeMute);
         },
         child: Icon(
           youtubeMute ? Icons.volume_up_rounded : Icons.volume_mute_rounded,
