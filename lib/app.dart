@@ -16,7 +16,11 @@ class App extends StatelessWidget {
       // ),
       navigatorKey: NavigationStore.instance.navigatorKey,
       onGenerateRoute: AppRouter.generateRoute,
-      initialRoute: RouteNames.Splash,
+      onGenerateInitialRoutes: (initialRoute) => [
+        AppRouter.generateRoute(
+          RouteSettings(name: RouteNames.Splash),
+        ),
+      ],
     );
   }
 }
