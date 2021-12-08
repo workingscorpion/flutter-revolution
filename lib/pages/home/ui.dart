@@ -47,6 +47,7 @@ class _UIPageState extends State<UIPage> {
           // TODO: OX퀴즈 이벤트
           // TODO: text style custom
           // TODO: 로고 매니저
+          // TODO: 핸드폰 앨범처럼 줌 인/아웃을 통해 한번에 볼 수 있는 아이템의 수를 조절가능하도록 한 이미지 그리드 리스트
         ],
       ),
     );
