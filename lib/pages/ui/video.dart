@@ -3,6 +3,8 @@ import 'package:revolution/components/customBox.dart';
 import 'package:revolution/constants/customColors.dart';
 import 'package:video_player/video_player.dart';
 import 'package:youtube_player_flutter/youtube_player_flutter.dart';
+import 'package:youtube_player_iframe/youtube_player_iframe.dart'
+    as YoutubeIFrame;
 
 class VideoPage extends StatefulWidget {
   VideoPage({Key key}) : super(key: key);
@@ -15,7 +17,10 @@ class _VideoPageState extends State<VideoPage> {
   VideoPlayerController assetController;
   VideoPlayerController networkController;
   YoutubePlayerController youtubePlayerController;
+  YoutubeIFrame.YoutubePlayerController youtubeIframePlayerController;
+
   bool youtubeMute = true;
+  bool iframeMute = true;
 
   @override
   void initState() {
@@ -42,6 +47,17 @@ class _VideoPageState extends State<VideoPage> {
         enableCaption: false,
       ),
     );
+    youtubeIframePlayerController = YoutubeIFrame.YoutubePlayerController(
+        initialVideoId: 'ITzcZia7fsQ',
+        params: YoutubeIFrame.YoutubePlayerParams(
+          autoPlay: true,
+          mute: iframeMute,
+          loop: true,
+          enableCaption: false,
+          desktopMode: false,
+          privacyEnhanced: true,
+          // useHybridComposition: true,
+        ));
   }
 
   @override
@@ -49,6 +65,7 @@ class _VideoPageState extends State<VideoPage> {
     assetController.dispose();
     networkController.dispose();
     youtubePlayerController.dispose();
+    youtubeIframePlayerController.close();
     super.dispose();
   }
 
@@ -77,11 +94,20 @@ class _VideoPageState extends State<VideoPage> {
               title: 'Youtube Video',
               child: youtube(),
             ),
+            CustomBox(
+              title: 'Youtube Video IFrame',
+              child: youtubeIFrame(),
+            ),
           ],
         ),
       ),
     );
   }
+
+  youtubeIFrame() => YoutubeIFrame.YoutubePlayerIFrame(
+        controller: youtubeIframePlayerController,
+        aspectRatio: 16 / 9,
+      );
 
   youtube() => YoutubePlayer(
         controller: youtubePlayerController,
