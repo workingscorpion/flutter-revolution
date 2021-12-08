@@ -24,7 +24,7 @@ class _HomePageState extends State<HomePage>
     },
     {
       'icon': Icons.functions,
-      'label': '기능',
+      'label': 'Function',
     },
     {
       'icon': Icons.settings,
@@ -86,38 +86,64 @@ class _HomePageState extends State<HomePage>
         ],
       );
 
-  navigator() => BottomNavigationBar(
-        onTap: (index) {
-          controller?.animateTo(index, duration: Duration(milliseconds: 75));
-          setState(() {});
-        },
-        currentIndex: controller.index,
-        backgroundColor: Colors.white,
-        elevation: 20,
-        type: BottomNavigationBarType.fixed,
-        iconSize: 20,
-        showSelectedLabels: true,
-        showUnselectedLabels: true,
-        selectedItemColor: CustomColors.mainColor,
-        unselectedItemColor: CustomColors.disabledGrey,
-        selectedFontSize: 11,
-        unselectedFontSize: 11,
-        items: [
-          ...List.generate(
-            menus.length,
-            (index) => BottomNavigationBarItem(
-              icon: Container(
-                margin: EdgeInsets.only(bottom: 2),
-                child: Icon(
-                  menus[index]['icon'],
-                  color: controller.index == index
-                      ? CustomColors.mainColor
-                      : CustomColors.disabledGrey,
-                ),
-              ),
-              label: menus[index]['label'],
-            ),
+  navigator() =>
+      // ClipRRect(
+      //       borderRadius: BorderRadius.only(
+      //         topLeft: Radius.circular(25),
+      //         topRight: Radius.circular(25),
+      //       ),
+      //       child:
+      Container(
+        decoration: BoxDecoration(
+          color: Colors.white,
+          borderRadius: BorderRadius.only(
+            topLeft: Radius.circular(25),
+            topRight: Radius.circular(25),
           ),
-        ],
+          boxShadow: [
+            BoxShadow(
+              color: Colors.black.withOpacity(.16),
+              blurRadius: 6,
+              offset: Offset(5.0, 0.0),
+            ),
+          ],
+        ),
+        child: BottomNavigationBar(
+          onTap: (index) {
+            controller?.animateTo(index, duration: Duration(milliseconds: 75));
+            setState(() {});
+          },
+          currentIndex: controller.index,
+          backgroundColor: Colors.transparent,
+          // backgroundColor: Colors.red,
+          // backgroundColor: Colors.white,
+          elevation: 0,
+          // type: BottomNavigationBarType.fixed,
+          iconSize: 20,
+          showSelectedLabels: true,
+          showUnselectedLabels: true,
+          selectedItemColor: CustomColors.mainColor,
+          unselectedItemColor: CustomColors.disabledGrey,
+          selectedFontSize: 11,
+          unselectedFontSize: 11,
+          items: [
+            ...List.generate(
+              menus.length,
+              (index) => BottomNavigationBarItem(
+                icon: Container(
+                  margin: EdgeInsets.only(bottom: 2),
+                  child: Icon(
+                    menus[index]['icon'],
+                    color: controller.index == index
+                        ? CustomColors.mainColor
+                        : CustomColors.disabledGrey,
+                  ),
+                ),
+                label: menus[index]['label'],
+              ),
+            ),
+          ],
+        ),
+        // ),
       );
 }
