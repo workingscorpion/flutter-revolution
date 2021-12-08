@@ -3,6 +3,8 @@ class RouteNames {
 
   static const String Home = '/';
 
+  static const String Auth = '/auth';
+
   // ui
   static const String Progress = '/progress';
   static const String ProgressIndicator = '/progress-indicator';
