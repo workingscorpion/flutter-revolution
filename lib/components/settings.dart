@@ -66,6 +66,17 @@ class Settings extends StatelessWidget {
               .asMap()
               .map((index, e) => MapEntry(index, setting(e, index)))
               .values,
+          [
+            settings.subTexts != null && settings.subTexts.length > 0
+                ? Container(
+                    margin: EdgeInsets.only(top: 10),
+                    child: Column(
+                      crossAxisAlignment: CrossAxisAlignment.stretch,
+                      children: settings.subTexts.map((e) => Text(e)).toList(),
+                    ),
+                  )
+                : Container(),
+          ]
         ].expand((e) => e).toList(),
       ),
     );
