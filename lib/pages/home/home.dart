@@ -66,10 +66,9 @@ class _HomePageState extends State<HomePage>
     return Scaffold(
       body: WillPopScope(
         onWillPop: onWillPop,
-        child: SafeArea(
-          child: body(),
-        ),
+        child: body(),
       ),
+      extendBody: true,
       bottomNavigationBar: navigator(),
     );
   }
@@ -100,8 +99,8 @@ class _HomePageState extends State<HomePage>
         ),
         child: ClipRRect(
           borderRadius: BorderRadius.only(
-            topLeft: Radius.circular(30.0),
-            topRight: Radius.circular(30.0),
+            topLeft: Radius.circular(25.0),
+            topRight: Radius.circular(25.0),
           ),
           child: BottomNavigationBar(
             onTap: (index) {

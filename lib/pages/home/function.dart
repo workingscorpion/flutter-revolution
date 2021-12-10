@@ -14,6 +14,7 @@ class _FunctionPageState extends State<FunctionPage> {
   @override
   Widget build(BuildContext context) {
     return Container(
+      padding: EdgeInsets.symmetric(vertical: 40),
       child: ListView(
         padding: EdgeInsets.symmetric(horizontal: 25, vertical: 20),
         children: [
