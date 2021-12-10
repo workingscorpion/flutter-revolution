@@ -67,9 +67,7 @@ class _HomePageState extends State<HomePage>
       body: WillPopScope(
         onWillPop: onWillPop,
         child: SafeArea(
-          child: Container(
-            child: body(),
-          ),
+          child: body(),
         ),
       ),
       bottomNavigationBar: navigator(),
@@ -86,19 +84,11 @@ class _HomePageState extends State<HomePage>
         ],
       );
 
-  navigator() =>
-      // ClipRRect(
-      //       borderRadius: BorderRadius.only(
-      //         topLeft: Radius.circular(25),
-      //         topRight: Radius.circular(25),
-      //       ),
-      //       child:
-      Container(
+  navigator() => Container(
         decoration: BoxDecoration(
-          color: Colors.white,
           borderRadius: BorderRadius.only(
-            topLeft: Radius.circular(25),
             topRight: Radius.circular(25),
+            topLeft: Radius.circular(25),
           ),
           boxShadow: [
             BoxShadow(
@@ -108,42 +98,42 @@ class _HomePageState extends State<HomePage>
             ),
           ],
         ),
-        child: BottomNavigationBar(
-          onTap: (index) {
-            controller?.animateTo(index, duration: Duration(milliseconds: 75));
-            setState(() {});
-          },
-          currentIndex: controller.index,
-          backgroundColor: Colors.transparent,
-          // backgroundColor: Colors.red,
-          // backgroundColor: Colors.white,
-          elevation: 0,
-          // type: BottomNavigationBarType.fixed,
-          iconSize: 20,
-          showSelectedLabels: true,
-          showUnselectedLabels: true,
-          selectedItemColor: CustomColors.mainColor,
-          unselectedItemColor: CustomColors.disabledGrey,
-          selectedFontSize: 11,
-          unselectedFontSize: 11,
-          items: [
-            ...List.generate(
-              menus.length,
-              (index) => BottomNavigationBarItem(
-                icon: Container(
-                  margin: EdgeInsets.only(bottom: 2),
-                  child: Icon(
-                    menus[index]['icon'],
-                    color: controller.index == index
-                        ? CustomColors.mainColor
-                        : CustomColors.disabledGrey,
+        child: ClipRRect(
+          borderRadius: BorderRadius.only(
+            topLeft: Radius.circular(30.0),
+            topRight: Radius.circular(30.0),
+          ),
+          child: BottomNavigationBar(
+            onTap: (index) {
+              controller?.animateTo(index,
+                  duration: Duration(milliseconds: 75));
+              setState(() {});
+            },
+            currentIndex: controller.index,
+            type: BottomNavigationBarType.fixed,
+            selectedFontSize: 12,
+            unselectedFontSize: 12,
+            selectedItemColor: CustomColors.mainColor,
+            unselectedItemColor: CustomColors.disabledGrey,
+            showUnselectedLabels: true,
+            items: [
+              ...List.generate(
+                menus.length,
+                (index) => BottomNavigationBarItem(
+                  icon: Container(
+                    margin: EdgeInsets.only(bottom: 2),
+                    child: Icon(
+                      menus[index]['icon'],
+                      color: controller.index == index
+                          ? CustomColors.mainColor
+                          : CustomColors.disabledGrey,
+                    ),
                   ),
+                  label: menus[index]['label'],
                 ),
-                label: menus[index]['label'],
               ),
-            ),
-          ],
+            ],
+          ),
         ),
-        // ),
       );
 }
