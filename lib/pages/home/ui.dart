@@ -1,4 +1,5 @@
 import 'package:revolution/components/buttons/carousel.dart';
+import 'package:revolution/components/buttons/dynamicGrid.dart';
 import 'package:revolution/components/buttons/lottery.dart';
 import 'package:revolution/components/buttons/maskAlert.dart';
 import 'package:revolution/components/buttons/progressBar.dart';
@@ -33,6 +34,7 @@ class _UIPageState extends State<UIPage> {
           RouletteButton(),
           LotteryButton(),
           VideoButton(),
+          DynamicGridButton(),
           // TODO: number sliding animation with formatting
           // TODO: 토스트 자체 제작
           // TODO: snackbar
@@ -48,7 +50,6 @@ class _UIPageState extends State<UIPage> {
           // TODO: OX퀴즈 이벤트
           // TODO: text style custom
           // TODO: 로고 매니저
-          // TODO: 핸드폰 앨범처럼 줌 인/아웃을 통해 한번에 볼 수 있는 아이템의 수를 조절가능하도록 한 이미지 그리드 리스트
           // TODO: Hero
         ],
       ),
