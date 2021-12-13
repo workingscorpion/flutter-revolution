@@ -16,6 +16,7 @@ class RouteNames {
   static const String Roulette = '/roulette';
   static const String Lottery = '/lottery';
   static const String Video = '/video';
+  static const String Grid = '/grid';
 
   // function
   static const String InfiniteScroll = '/infinite';
