@@ -1,5 +1,6 @@
 import 'package:revolution/components/buttons/carousel.dart';
 import 'package:revolution/components/buttons/dynamicGrid.dart';
+import 'package:revolution/components/buttons/hero.dart';
 import 'package:revolution/components/buttons/lottery.dart';
 import 'package:revolution/components/buttons/maskAlert.dart';
 import 'package:revolution/components/buttons/progressBar.dart';
@@ -35,6 +36,8 @@ class _UIPageState extends State<UIPage> {
           LotteryButton(),
           VideoButton(),
           DynamicGridButton(),
+          HeroButton(),
+
           // TODO: number sliding animation with formatting
           // TODO: 토스트 자체 제작
           // TODO: snackbar
@@ -50,7 +53,6 @@ class _UIPageState extends State<UIPage> {
           // TODO: OX퀴즈 이벤트
           // TODO: text style custom
           // TODO: 로고 매니저
-          // TODO: Hero
         ],
       ),
     );

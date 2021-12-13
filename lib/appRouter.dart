@@ -5,6 +5,7 @@ import 'package:revolution/pages/home/home.dart';
 import 'package:revolution/pages/splash.dart';
 import 'package:revolution/pages/ui/carousel.dart';
 import 'package:revolution/pages/ui/grid.dart';
+import 'package:revolution/pages/ui/hero.dart';
 import 'package:revolution/pages/ui/lottery.dart';
 import 'package:revolution/pages/ui/maskAlert.dart';
 import 'package:revolution/pages/ui/progress.dart';
@@ -93,6 +94,12 @@ class AppRouter {
           builder: (BuildContext context) => GridPage(),
         );
 
+      case RouteNames.Hero:
+        return CupertinoPageRoute(
+          settings: settings,
+          builder: (BuildContext context) => HeroPage(),
+        );
+
       // Function
       case RouteNames.InfiniteScroll:
         return CupertinoPageRoute(
@@ -164,6 +171,10 @@ class AppRouter {
 
   static toGridPage() {
     return Navigator.of(context).pushNamed(RouteNames.Grid);
+  }
+
+  static toHeroPage() {
+    return Navigator.of(context).pushNamed(RouteNames.Hero);
   }
 
   // Function
