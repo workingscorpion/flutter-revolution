@@ -4,7 +4,7 @@ import 'package:revolution/components/buttons/hero.dart';
 import 'package:revolution/components/buttons/lottery.dart';
 import 'package:revolution/components/buttons/maskAlert.dart';
 import 'package:revolution/components/buttons/progressBar.dart';
-import 'package:revolution/components/buttons/progressIndicator.dart';
+import 'package:revolution/components/buttons/loadingIndicator.dart';
 import 'package:revolution/components/buttons/roulette.dart';
 import 'package:revolution/components/buttons/timer.dart';
 import 'package:revolution/components/buttons/ticket.dart';
