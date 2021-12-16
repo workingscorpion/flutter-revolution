@@ -9,7 +9,7 @@ class ProgressIndicatorButton extends StatelessWidget {
   Widget build(BuildContext context) {
     return CustomButton(
       image: 'assets/home/progress-indicator.png',
-      text: 'progress Indicator',
+      text: 'Loading Indicator',
       onTap: () => AppRouter.toProgressIndicatorPage(),
     );
   }

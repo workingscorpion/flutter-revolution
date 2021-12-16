@@ -44,6 +44,8 @@ dependencies:
   video_player: ^1.0.1
   youtube_player_flutter: ^7.0.0+7
   youtube_player_iframe: ^1.2.0+2
+  loading_indicator: ^1.2.0
+  loading_animations: ^2.1.0
 
   cupertino_icons: ^1.0.0
 
