@@ -20,9 +20,9 @@ class _GridPageState extends State<GridPage> {
             if (details.scale == 1.0) {
               return;
             } else if (scale < 1.0) {
-              crossAxisCount = 3;
-            } else {
               crossAxisCount = 4;
+            } else {
+              crossAxisCount = 3;
             }
             setState(() {});
           },
