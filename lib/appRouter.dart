@@ -3,6 +3,7 @@ import 'package:revolution/pages/function/infiniteScroll.dart';
 import 'package:revolution/pages/function/tapjoy.dart';
 import 'package:revolution/pages/home/home.dart';
 import 'package:revolution/pages/splash.dart';
+import 'package:revolution/pages/ui/audio.dart';
 import 'package:revolution/pages/ui/carousel.dart';
 import 'package:revolution/pages/ui/grid.dart';
 import 'package:revolution/pages/ui/hero.dart';
@@ -100,6 +101,12 @@ class AppRouter {
           builder: (BuildContext context) => HeroPage(),
         );
 
+      case RouteNames.Audio:
+        return CupertinoPageRoute(
+          settings: settings,
+          builder: (BuildContext context) => AudioPage(),
+        );
+
       // Function
       case RouteNames.InfiniteScroll:
         return CupertinoPageRoute(
@@ -175,6 +182,10 @@ class AppRouter {
 
   static toHeroPage() {
     return Navigator.of(context).pushNamed(RouteNames.Hero);
+  }
+
+  static toAudioPage() {
+    return Navigator.of(context).pushNamed(RouteNames.Audio);
   }
 
   // Function

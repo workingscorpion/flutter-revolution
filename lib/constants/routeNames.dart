@@ -18,6 +18,7 @@ class RouteNames {
   static const String Video = '/video';
   static const String Grid = '/grid';
   static const String Hero = '/hero';
+  static const String Audio = '/audio';
 
   // function
   static const String InfiniteScroll = '/infinite';
