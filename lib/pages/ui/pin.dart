@@ -17,6 +17,7 @@ class PinPage extends StatefulWidget {
 class _PinPageState extends State<PinPage> {
   showSlide() async {
     await showCupertinoModalBottomSheet(
+      isDismissible: false,
       topRadius: Radius.circular(30),
       backgroundColor: Colors.black.withOpacity(.45),
       context: context,

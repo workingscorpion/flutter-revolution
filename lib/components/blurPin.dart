@@ -4,6 +4,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_svg/flutter_svg.dart';
 import 'package:revolution/appRouter.dart';
 import 'package:revolution/constants/customColors.dart';
+import 'package:vibration/vibration.dart';
 
 class BlurPin extends StatefulWidget {
   BlurPin({Key key}) : super(key: key);
@@ -22,13 +23,16 @@ class _BlurPinState extends State<BlurPin> {
     return password.length;
   }
 
-  setPassword(int e) {
+  setPassword(int e) async {
     password += '$e';
     setState(() {});
     if (length >= 6) {
       if (password == answer) {
         AppRouter.pop();
       } else {
+        if (await Vibration.hasVibrator()) {
+          Vibration.vibrate();
+        }
         shake();
         clear();
       }
@@ -135,7 +139,7 @@ class _BlurPinState extends State<BlurPin> {
         builder: (context, animation, child) => key != 0
             ? Transform.translate(
                 offset: Offset(
-                  20 *
+                  30 *
                       2 *
                       (0.5 -
                           (0.5 - Curves.bounceOut.transform(animation)).abs()),
@@ -160,7 +164,7 @@ class _BlurPinState extends State<BlurPin> {
           physics: NeverScrollableScrollPhysics(),
           gridDelegate: SliverGridDelegateWithFixedCrossAxisCount(
             crossAxisCount: 3,
-            childAspectRatio: 6 / 4,
+            childAspectRatio: 6 / 5,
           ),
           itemCount: initDigits.length + 2,
           itemBuilder: (BuildContext context, int index) => setKeyPad(index),
