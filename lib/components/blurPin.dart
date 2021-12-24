@@ -29,8 +29,8 @@ class _BlurPinState extends State<BlurPin> {
       if (password == answer) {
         AppRouter.pop();
       } else {
-        clear();
         shake();
+        clear();
       }
     }
   }
