@@ -15,6 +15,8 @@ class BlurPin extends StatefulWidget {
 class _BlurPinState extends State<BlurPin> {
   List<int> initDigits = List<int>.generate(10, (i) => i)..shuffle();
   String password = "";
+  String answer = "000000";
+  int key = 0;
 
   int get length {
     return password.length;
@@ -24,12 +26,27 @@ class _BlurPinState extends State<BlurPin> {
     password += '$e';
     setState(() {});
     if (length >= 6) {
-      AppRouter.pop();
+      if (password == answer) {
+        AppRouter.pop();
+      } else {
+        clear();
+        shake();
+      }
     }
+  }
+
+  shake() {
+    key++;
+    setState(() {});
   }
 
   deletePassword() {
     password = password.substring(0, password.length - 1);
+    setState(() {});
+  }
+
+  clear() {
+    password = "";
     setState(() {});
   }
 
@@ -111,15 +128,28 @@ class _BlurPinState extends State<BlurPin> {
         ],
       );
 
-  Widget digits() => Container(
-        // margin: EdgeInsets.symmetric(
-        //   // horizontal: MediaQuery.of(context).size.width * .12,
-        //   vertical: 40,
-        // ),
-        padding: EdgeInsets.symmetric(horizontal: 5),
-        child: Row(
-          mainAxisAlignment: MainAxisAlignment.center,
-          children: List.generate(6, (i) => digit(i)),
+  Widget digits() => TweenAnimationBuilder<double>(
+        key: Key(key.toString()),
+        tween: Tween(begin: 0.0, end: 1.0),
+        duration: const Duration(milliseconds: 500),
+        builder: (context, animation, child) => key != 0
+            ? Transform.translate(
+                offset: Offset(
+                  20 *
+                      2 *
+                      (0.5 -
+                          (0.5 - Curves.bounceOut.transform(animation)).abs()),
+                  0,
+                ),
+                child: child,
+              )
+            : child,
+        child: Container(
+          padding: EdgeInsets.symmetric(horizontal: 5),
+          child: Row(
+            mainAxisAlignment: MainAxisAlignment.center,
+            children: List.generate(6, (i) => digit(i)),
+          ),
         ),
       );
 
