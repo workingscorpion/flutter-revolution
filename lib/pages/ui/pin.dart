@@ -63,8 +63,7 @@ class _PinPageState extends State<PinPage> {
               ),
             ),
             CustomBox(
-              title: 'Pin with Slide',
-              // title: 'Pin with Blur Slide',
+              title: 'Pin with Blur Slide',
               child: InkWell(
                 onTap: () => showSlide(),
                 child: Container(
@@ -76,7 +75,7 @@ class _PinPageState extends State<PinPage> {
                     ),
                     borderRadius: BorderRadius.circular(8),
                   ),
-                  child: Text('Show Pin Slide'),
+                  child: Text('Show Pin Blur Slide'),
                 ),
               ),
             ),

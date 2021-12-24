@@ -44,7 +44,6 @@ class _BlurPinState extends State<BlurPin> {
           topLeft: Radius.circular(30),
           topRight: Radius.circular(30),
         ),
-        // clipBehavior: Clip.antiAliasWithSaveLayer,
         child: BackdropFilter(
           filter: ImageFilter.blur(sigmaY: 10, sigmaX: 10),
           child: Container(
@@ -106,17 +105,17 @@ class _BlurPinState extends State<BlurPin> {
           digits(),
           // Spacer(),
           Container(
-            height: MediaQuery.of(context).size.height * .1,
+            height: MediaQuery.of(context).size.height * .15,
           ),
           keyPads(),
         ],
       );
 
   Widget digits() => Container(
-        margin: EdgeInsets.symmetric(
-          // horizontal: MediaQuery.of(context).size.width * .12,
-          vertical: 40,
-        ),
+        // margin: EdgeInsets.symmetric(
+        //   // horizontal: MediaQuery.of(context).size.width * .12,
+        //   vertical: 40,
+        // ),
         padding: EdgeInsets.symmetric(horizontal: 5),
         child: Row(
           mainAxisAlignment: MainAxisAlignment.center,
