@@ -6,8 +6,10 @@ import 'package:revolution/pages/splash.dart';
 import 'package:revolution/pages/ui/carousel.dart';
 import 'package:revolution/pages/ui/grid.dart';
 import 'package:revolution/pages/ui/hero.dart';
+import 'package:revolution/pages/ui/keypad.dart';
 import 'package:revolution/pages/ui/lottery.dart';
 import 'package:revolution/pages/ui/maskAlert.dart';
+import 'package:revolution/pages/ui/pin.dart';
 import 'package:revolution/pages/ui/progress.dart';
 import 'package:revolution/pages/ui/progressIndicator.dart';
 import 'package:revolution/pages/ui/roulette.dart';
@@ -100,6 +102,18 @@ class AppRouter {
           builder: (BuildContext context) => HeroPage(),
         );
 
+      case RouteNames.Pin:
+        return CupertinoPageRoute(
+          settings: settings,
+          builder: (BuildContext context) => PinPage(),
+        );
+
+      case RouteNames.Keypad:
+        return CupertinoPageRoute(
+          settings: settings,
+          builder: (BuildContext context) => KeyPadPage(),
+        );
+
       // Function
       case RouteNames.InfiniteScroll:
         return CupertinoPageRoute(
@@ -175,6 +189,14 @@ class AppRouter {
 
   static toHeroPage() {
     return Navigator.of(context).pushNamed(RouteNames.Hero);
+  }
+
+  static toPinPage() {
+    return Navigator.of(context).pushNamed(RouteNames.Pin);
+  }
+
+  static toKeyPadPage() {
+    return Navigator.of(context).pushNamed(RouteNames.Keypad);
   }
 
   // Function

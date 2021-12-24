@@ -18,6 +18,8 @@ class RouteNames {
   static const String Video = '/video';
   static const String Grid = '/grid';
   static const String Hero = '/hero';
+  static const String Pin = '/pin';
+  static const String Keypad = '/pin/keypad';
 
   // function
   static const String InfiniteScroll = '/infinite';

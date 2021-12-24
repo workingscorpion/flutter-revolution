@@ -46,6 +46,7 @@ dependencies:
   youtube_player_iframe: ^1.2.0+2
   loading_indicator: ^1.2.0
   loading_animations: ^2.1.0
+  modal_bottom_sheet: ^1.0.0+1
 
   cupertino_icons: ^1.0.0
 
