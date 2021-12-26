@@ -1,7 +1,11 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_mobx/flutter_mobx.dart';
 import 'package:intl/intl.dart';
+import 'package:revolution/appRouter.dart';
 import 'package:revolution/components/chat.dart';
+import 'package:revolution/constants/customColors.dart';
 import 'package:revolution/model/chatItem.dart';
+import 'package:revolution/store/chatStore.dart';
 
 class ChatPage extends StatefulWidget {
   ChatPage({Key key}) : super(key: key);
@@ -11,7 +15,10 @@ class ChatPage extends StatefulWidget {
 }
 
 class _ChatPageState extends State<ChatPage> {
-  List<ChatItem> chats = List<ChatItem>();
+  ScrollController controller = ScrollController();
+
+  TextEditingController chatController = TextEditingController();
+  FocusNode focus = FocusNode();
 
   bool mine(ChatItem chat) {
     return chat.writer == "me" ? true : false;
@@ -19,53 +26,69 @@ class _ChatPageState extends State<ChatPage> {
 
   @override
   void initState() {
-    chats = List.generate(
-      100,
-      (index) => ChatItem(
-        writer: index % 2 == 1 ? 'you' : 'me',
-        createdTime: DateTime.now().add(Duration(minutes: index * 1)),
-        contents: 'contents $index',
-      ),
-    );
+    load();
     super.initState();
+    // controller.addListener(() {
+    //   print('listener');
+    // });
+
+    WidgetsBinding.instance.addPostFrameCallback((_) => toBottom());
+  }
+
+  load() async {
+    await ChatStore.instance.load();
+  }
+
+  toBottom() {
+    controller.jumpTo(controller.position.maxScrollExtent);
+  }
+
+  send() async {
+    if (chatController.text != "") {
+      await ChatStore.instance.send(
+        ChatItem(
+          contents: chatController.text,
+          createdTime: DateTime.now(),
+          writer: 'me',
+        ),
+      );
+    }
+    chatController.clear();
+    focus.requestFocus();
+    WidgetsBinding.instance.addPostFrameCallback((_) => toBottom());
   }
 
   @override
   Widget build(BuildContext context) {
     return Scaffold(
       backgroundColor: Colors.blue[200],
-      body: SafeArea(
-        child: Stack(
-          children: [
-            Container(
-              margin: EdgeInsets.only(bottom: 50),
-              child: Stack(
-                children: [
-                  Chat<ChatItem>(
-                    items: chats,
-                    builder: (ChatItem chat) => chatBuilder(chat),
-                  ),
-                  header(),
-                ],
-              ),
+      body: Stack(
+        children: [
+          Container(
+            margin: EdgeInsets.only(bottom: 90),
+            child: Stack(
+              children: [
+                body(),
+                header(),
+              ],
             ),
-            Positioned(
-              bottom: 0,
-              height: 50,
-              width: MediaQuery.of(context).size.width,
-              child: Container(
-                color: Colors.red,
-                child: Text('input'),
-              ),
-            ),
-          ],
-        ),
+          ),
+          input(),
+        ],
       ),
     );
   }
 
-  Widget chatBuilder(ChatItem chat) => Container(
-        padding: EdgeInsets.symmetric(horizontal: 10),
+  Widget body() => Chat<ChatItem>(
+        items: ChatStore.instance.chats,
+        builder: (ChatItem chat, int index) => chatBuilder(chat, index),
+        controller: controller,
+      );
+
+  Widget chatBuilder(ChatItem chat, int index) => Container(
+        padding: index == 0
+            ? EdgeInsets.only(left: 10, right: 10, top: 50, bottom: 5)
+            : EdgeInsets.symmetric(horizontal: 10, vertical: 5),
         child: Row(
           mainAxisAlignment:
               mine(chat) ? MainAxisAlignment.end : MainAxisAlignment.start,
@@ -137,14 +160,19 @@ class _ChatPageState extends State<ChatPage> {
 
   Widget header() => Container(
         color: Colors.white.withOpacity(.8),
-        padding: EdgeInsets.symmetric(horizontal: 10),
-        height: 50,
+        padding: EdgeInsets.symmetric(horizontal: 10, vertical: 20),
+        height: 90,
         child: Row(
           mainAxisAlignment: MainAxisAlignment.spaceBetween,
+          crossAxisAlignment: CrossAxisAlignment.end,
           children: [
-            Icon(Icons.keyboard_arrow_left),
+            GestureDetector(
+              onTap: () => AppRouter.pop(),
+              child: Icon(Icons.keyboard_arrow_left),
+            ),
             Text('you'),
             Row(
+              crossAxisAlignment: CrossAxisAlignment.end,
               children: [
                 Icon(Icons.search),
                 Container(
@@ -155,5 +183,55 @@ class _ChatPageState extends State<ChatPage> {
             ),
           ],
         ),
+      );
+
+  Widget input() => Positioned(
+        bottom: 0,
+        height: MediaQuery.of(context).viewInsets.bottom == 0 ? 100 : 50,
+        width: MediaQuery.of(context).size.width,
+        child: Container(
+          padding: EdgeInsets.only(bottom: 5),
+          // alignment: Alignment.centerLeft,
+          // padding: EdgeInsets.only(bottom: 50),
+          height: 50,
+          color: Colors.white,
+          child: TextField(
+            decoration: InputDecoration(
+              hintText: 'messege',
+              hintStyle: TextStyle(
+                color: CustomColors.disabledGrey,
+                fontSize: 14,
+              ),
+              focusedBorder: inputBorder(focus: true),
+              enabledBorder: inputBorder(),
+              border: inputBorder(),
+              contentPadding: EdgeInsets.symmetric(horizontal: 15),
+              suffix: sendButton(),
+            ),
+            controller: chatController,
+            focusNode: focus,
+            onSubmitted: (_) => send(),
+          ),
+        ),
+      );
+
+  sendButton() => GestureDetector(
+        onTap: () => send(),
+        child: Container(
+          padding: EdgeInsets.all(5),
+          decoration: BoxDecoration(
+            shape: BoxShape.circle,
+            color: Colors.yellow,
+          ),
+          child: Icon(
+            Icons.arrow_upward,
+            size: 18,
+          ),
+        ),
+      );
+
+  inputBorder({focus = false}) => UnderlineInputBorder(
+        // borderRadius: BorderRadius.all(Radius.circular(8)),
+        borderSide: BorderSide.none,
       );
 }

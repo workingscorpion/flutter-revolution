@@ -50,7 +50,6 @@ class _UIPageState extends State<UIPage> {
                 // TODO: snackbar
                 // TODO: custom switch(from 유진쓰)
                 // TODO: 고정된 component 사이에 자동으로 margin 주는 ui(마지막은 margin 없게)
-                // TODO: chatting ui
               ],
             ),
           ),
