@@ -21,7 +21,6 @@ class _FunctionPageState extends State<FunctionPage> {
           BioAuthButton(),
           InfiniteScrollButton(),
           TapjoyButton(),
-          // TODO: advertisement(ex. tapjoy, iron-source)
           // TODO: textFormmating
         ],
       ),

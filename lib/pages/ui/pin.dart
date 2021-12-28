@@ -5,7 +5,6 @@ import 'package:revolution/appRouter.dart';
 import 'package:revolution/components/blurPin.dart';
 import 'package:revolution/components/customBox.dart';
 import 'package:modal_bottom_sheet/modal_bottom_sheet.dart';
-import 'package:revolution/constants/customColors.dart';
 
 class PinPage extends StatefulWidget {
   PinPage({Key key}) : super(key: key);

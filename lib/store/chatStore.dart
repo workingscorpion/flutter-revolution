@@ -1,5 +1,4 @@
 import 'package:revolution/model/chatItem.dart';
-import 'package:revolution/model/listItem.dart';
 import 'package:revolution/utils/lazy.dart';
 import 'package:mobx/mobx.dart';
 
