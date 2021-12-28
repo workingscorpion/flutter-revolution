@@ -100,7 +100,7 @@ class _SettingPageState extends State<SettingPage> {
   @override
   Widget build(BuildContext context) {
     return Container(
-      padding: EdgeInsets.symmetric(vertical: 40),
+      padding: EdgeInsets.symmetric(vertical: 60),
       color: CustomColors.grayColor20,
       child: ListView(
         padding: EdgeInsets.symmetric(

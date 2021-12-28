@@ -24,7 +24,7 @@ class _UIPageState extends State<UIPage> {
   @override
   Widget build(BuildContext context) {
     return Container(
-      padding: EdgeInsets.symmetric(vertical: 40),
+      padding: EdgeInsets.symmetric(vertical: 60),
       child: ListView(
         padding: EdgeInsets.symmetric(horizontal: 25, vertical: 20),
         children: [
