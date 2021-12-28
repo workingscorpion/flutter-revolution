@@ -2,6 +2,7 @@ import 'package:revolution/components/buttons/carousel.dart';
 import 'package:revolution/components/buttons/dynamicGrid.dart';
 import 'package:revolution/components/buttons/hero.dart';
 import 'package:revolution/components/buttons/lottery.dart';
+import 'package:revolution/components/buttons/chat.dart';
 import 'package:revolution/components/buttons/maskAlert.dart';
 import 'package:revolution/components/buttons/pin.dart';
 import 'package:revolution/components/buttons/progressBar.dart';
@@ -54,6 +55,7 @@ class _UIPageState extends State<UIPage> {
           // TODO: OX퀴즈 이벤트
           // TODO: text style custom
           // TODO: 로고 매니저
+                ChatButton(),
         ],
       ),
     );

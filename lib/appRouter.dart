@@ -4,10 +4,6 @@ import 'package:revolution/pages/function/tapjoy.dart';
 import 'package:revolution/pages/home/home.dart';
 import 'package:revolution/pages/splash.dart';
 import 'package:revolution/pages/ui/carousel.dart';
-import 'package:revolution/pages/ui/grid.dart';
-import 'package:revolution/pages/ui/hero.dart';
-import 'package:revolution/pages/ui/keypad.dart';
-import 'package:revolution/pages/ui/lottery.dart';
 import 'package:revolution/pages/ui/maskAlert.dart';
 import 'package:revolution/pages/ui/pin.dart';
 import 'package:revolution/pages/ui/progress.dart';
@@ -114,6 +110,12 @@ class AppRouter {
           builder: (BuildContext context) => KeyPadPage(),
         );
 
+      case RouteNames.Chat:
+        return CupertinoPageRoute(
+          settings: settings,
+          builder: (BuildContext context) => ChatPage(),
+        );
+
       // Function
       case RouteNames.InfiniteScroll:
         return CupertinoPageRoute(
@@ -197,6 +199,10 @@ class AppRouter {
 
   static toKeyPadPage() {
     return Navigator.of(context).pushNamed(RouteNames.Keypad);
+  }
+
+  static toChatPage() {
+    return Navigator.of(context).pushNamed(RouteNames.Chat);
   }
 
   // Function

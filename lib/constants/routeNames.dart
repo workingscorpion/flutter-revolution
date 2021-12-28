@@ -20,6 +20,7 @@ class RouteNames {
   static const String Hero = '/hero';
   static const String Pin = '/pin';
   static const String Keypad = '/pin/keypad';
+  static const String Chat = '/chat';
 
   // function
   static const String InfiniteScroll = '/infinite';
