@@ -21,6 +21,7 @@ class RouteNames {
   static const String Pin = '/pin';
   static const String Keypad = '/pin/keypad';
   static const String Chat = '/chat';
+  static const String SlideNotice = '/slide/notice';
 
   // function
   static const String InfiniteScroll = '/infinite';
