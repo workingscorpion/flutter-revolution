@@ -3,6 +3,7 @@ import 'dart:ui';
 import 'package:flutter/material.dart';
 import 'package:revolution/appRouter.dart';
 import 'package:revolution/constants/customColors.dart';
+import 'package:revolution/utils/bioAuthManager.dart';
 import 'package:vibration/vibration.dart';
 
 class BlurPin extends StatefulWidget {
@@ -17,9 +18,22 @@ class _BlurPinState extends State<BlurPin> {
   String password = "";
   String answer = "000000";
   int key = 0;
+  bool canBioAuth = true;
 
   int get length {
     return password.length;
+  }
+
+  @override
+  void initState() {
+    super.initState();
+    auth();
+  }
+
+  auth() async {
+    if (canBioAuth) {
+      await BioAuthManager.auth();
+    }
   }
 
   setPassword(int e) async {
