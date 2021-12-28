@@ -14,6 +14,7 @@ import 'package:revolution/pages/ui/pin.dart';
 import 'package:revolution/pages/ui/progress.dart';
 import 'package:revolution/pages/ui/progressIndicator.dart';
 import 'package:revolution/pages/ui/roulette.dart';
+import 'package:revolution/pages/ui/slideNotice.dart';
 import 'package:revolution/pages/ui/ticket.dart';
 import 'package:revolution/pages/ui/video.dart';
 import 'package:revolution/store/navigationStore.dart';
@@ -121,6 +122,12 @@ class AppRouter {
           builder: (BuildContext context) => ChatPage(),
         );
 
+      case RouteNames.SlideNotice:
+        return CupertinoPageRoute(
+          settings: settings,
+          builder: (BuildContext context) => SlideNoticePage(),
+        );
+
       // Function
       case RouteNames.InfiniteScroll:
         return CupertinoPageRoute(
@@ -208,6 +215,10 @@ class AppRouter {
 
   static toChatPage() {
     return Navigator.of(context).pushNamed(RouteNames.Chat);
+  }
+
+  static toSlideNoticePage() {
+    return Navigator.of(context).pushNamed(RouteNames.SlideNotice);
   }
 
   // Function

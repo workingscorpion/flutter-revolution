@@ -8,6 +8,7 @@ import 'package:revolution/components/buttons/pin.dart';
 import 'package:revolution/components/buttons/progressBar.dart';
 import 'package:revolution/components/buttons/loadingIndicator.dart';
 import 'package:revolution/components/buttons/roulette.dart';
+import 'package:revolution/components/buttons/slideNotice.dart';
 import 'package:revolution/components/buttons/timer.dart';
 import 'package:revolution/components/buttons/ticket.dart';
 import 'package:flutter/material.dart';
@@ -40,6 +41,8 @@ class _UIPageState extends State<UIPage> {
           DynamicGridButton(),
           HeroButton(),
           PinButton(),
+          ChatButton(),
+          SlideNoticeButton(),
           // TODO: number sliding animation with formatting
           // TODO: 토스트 자체 제작
           // TODO: snackbar
@@ -54,7 +57,6 @@ class _UIPageState extends State<UIPage> {
           // TODO: OX퀴즈 이벤트
           // TODO: text style custom
           // TODO: 로고 매니저
-          ChatButton(),
         ],
       ),
     );
