@@ -48,13 +48,7 @@ class _UIPageState extends State<UIPage> {
           // TODO: snackbar
           // TODO: custom switch(from 유진쓰)
           // TODO: 고정된 component 사이에 자동으로 margin 주는 ui(마지막은 margin 없게)
-          // TODO: 출석체크
-          // TODO: 숨은 그림 찾기(빼꼼 나온 캐릭터나 알파벳 클릭하면 슬쩍 나와서 사라진당)
-          // TODO: 4조각 퍼즐
           // TODO: 공룡알 누르면 랜덤 당첨금 나오는 뽑기
-          // TODO: 홀짝(오징어 게임)
-          // TODO: 특정 조건을 만족하면 실행되는 아이폰 에어드랍 UI 스타일을 가진 에어드랍 이벤트
-          // TODO: OX퀴즈 이벤트
           // TODO: text style custom
           // TODO: 로고 매니저
         ],
