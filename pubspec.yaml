@@ -48,6 +48,7 @@ dependencies:
   loading_indicator: ^1.2.0
   loading_animations: ^2.1.0
   modal_bottom_sheet: ^1.0.0+1
+  palette_generator: ^0.2.3
 
   cupertino_icons: ^1.0.0
 
