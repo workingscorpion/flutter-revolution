@@ -3,6 +3,7 @@ import 'package:revolution/pages/function/infiniteScroll.dart';
 import 'package:revolution/pages/function/tapjoy.dart';
 import 'package:revolution/pages/home/home.dart';
 import 'package:revolution/pages/splash.dart';
+import 'package:revolution/pages/ui/adaptiveColor.dart';
 import 'package:revolution/pages/ui/carousel.dart';
 import 'package:revolution/pages/ui/chat.dart';
 import 'package:revolution/pages/ui/grid.dart';
@@ -128,6 +129,12 @@ class AppRouter {
           builder: (BuildContext context) => SlideNoticePage(),
         );
 
+      case RouteNames.AdaptiveColor:
+        return CupertinoPageRoute(
+          settings: settings,
+          builder: (BuildContext context) => AdaptiveColorPage(),
+        );
+
       // Function
       case RouteNames.InfiniteScroll:
         return CupertinoPageRoute(
@@ -219,6 +226,10 @@ class AppRouter {
 
   static toSlideNoticePage() {
     return Navigator.of(context).pushNamed(RouteNames.SlideNotice);
+  }
+
+  static toAdaptiveColorPage() {
+    return Navigator.of(context).pushNamed(RouteNames.AdaptiveColor);
   }
 
   // Function

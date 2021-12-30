@@ -1,3 +1,4 @@
+import 'package:revolution/components/buttons/adaptiveColor.dart';
 import 'package:revolution/components/buttons/carousel.dart';
 import 'package:revolution/components/buttons/dynamicGrid.dart';
 import 'package:revolution/components/buttons/hero.dart';
@@ -43,6 +44,7 @@ class _UIPageState extends State<UIPage> {
           PinButton(),
           ChatButton(),
           SlideNoticeButton(),
+          AdaptiveColorButton(),
           // TODO: number sliding animation with formatting
           // TODO: 토스트 자체 제작
           // TODO: snackbar
