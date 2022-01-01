@@ -53,6 +53,7 @@ class _UIPageState extends State<UIPage> {
           // TODO: 공룡알 누르면 랜덤 당첨금 나오는 뽑기
           // TODO: text style custom
           // TODO: 로고 매니저
+          // TODO: widget
         ],
       ),
     );
