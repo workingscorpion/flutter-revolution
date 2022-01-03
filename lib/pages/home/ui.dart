@@ -56,7 +56,6 @@ class _UIPageState extends State<UIPage> {
           // TODO: text style custom
           // TODO: 로고 매니저
           // TODO: widget
-          // TODO: image zoom in & out
         ],
       ),
     );
