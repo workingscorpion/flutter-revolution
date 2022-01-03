@@ -23,6 +23,8 @@ class RouteNames {
   static const String Chat = '/chat';
   static const String SlideNotice = '/slide/notice';
   static const String AdaptiveColor = '/adaptive';
+  static const String Zoom = '/zoom';
+  static const String Image = '/image';
 
   // function
   static const String InfiniteScroll = '/infinite';

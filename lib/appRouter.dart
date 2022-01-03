@@ -10,6 +10,7 @@ import 'package:revolution/pages/ui/carousel.dart';
 import 'package:revolution/pages/ui/chat.dart';
 import 'package:revolution/pages/ui/grid.dart';
 import 'package:revolution/pages/ui/hero.dart';
+import 'package:revolution/pages/ui/image.dart';
 import 'package:revolution/pages/ui/keypad.dart';
 import 'package:revolution/pages/ui/lottery.dart';
 import 'package:revolution/pages/ui/maskAlert.dart';
@@ -20,6 +21,7 @@ import 'package:revolution/pages/ui/roulette.dart';
 import 'package:revolution/pages/ui/slideNotice.dart';
 import 'package:revolution/pages/ui/ticket.dart';
 import 'package:revolution/pages/ui/video.dart';
+import 'package:revolution/pages/ui/zoom.dart';
 import 'package:revolution/store/navigationStore.dart';
 import 'package:revolution/pages/ui/timer.dart';
 import 'package:flutter/cupertino.dart';
@@ -137,6 +139,21 @@ class AppRouter {
           builder: (BuildContext context) => AdaptiveColorPage(),
         );
 
+      case RouteNames.Zoom:
+        return CupertinoPageRoute(
+          settings: settings,
+          builder: (BuildContext context) => ZoomPage(),
+        );
+
+      case RouteNames.Image:
+        return CupertinoPageRoute(
+          // return MaterialPageRoute(
+          settings: settings,
+          builder: (BuildContext context) => ImagePage(
+            image: settings.arguments,
+          ),
+        );
+
       // Function
       case RouteNames.InfiniteScroll:
         return CupertinoPageRoute(
@@ -248,6 +265,14 @@ class AppRouter {
 
   static toAdaptiveColorPage() {
     return Navigator.of(context).pushNamed(RouteNames.AdaptiveColor);
+  }
+
+  static toZoomPage() {
+    return Navigator.of(context).pushNamed(RouteNames.Zoom);
+  }
+
+  static toImagePage(String image) {
+    return Navigator.of(context).pushNamed(RouteNames.Image, arguments: image);
   }
 
   // Function
