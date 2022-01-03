@@ -2,6 +2,7 @@ import 'package:revolution/components/buttons/bioAuth.dart';
 import 'package:flutter/material.dart';
 import 'package:revolution/components/buttons/infiniteScroll.dart';
 import 'package:revolution/components/buttons/tapjoy.dart';
+import 'package:revolution/components/buttons/term.dart';
 
 class FunctionPage extends StatefulWidget {
   FunctionPage({Key key}) : super(key: key);
@@ -21,6 +22,7 @@ class _FunctionPageState extends State<FunctionPage> {
           BioAuthButton(),
           InfiniteScrollButton(),
           TapjoyButton(),
+          TermButton(),
           // TODO: textFormmating
         ],
       ),

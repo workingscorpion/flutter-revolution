@@ -1,6 +1,8 @@
 import 'package:revolution/constants/routeNames.dart';
 import 'package:revolution/pages/function/infiniteScroll.dart';
 import 'package:revolution/pages/function/tapjoy.dart';
+import 'package:revolution/pages/function/term.dart';
+import 'package:revolution/pages/function/terms.dart';
 import 'package:revolution/pages/home/home.dart';
 import 'package:revolution/pages/splash.dart';
 import 'package:revolution/pages/ui/adaptiveColor.dart';
@@ -148,6 +150,22 @@ class AppRouter {
           builder: (BuildContext context) => TapjoyPage(),
         );
 
+      case RouteNames.Terms:
+        return CupertinoPageRoute(
+          settings: settings,
+          builder: (BuildContext context) => TermsPage(),
+        );
+
+      case RouteNames.Term:
+        final args = settings.arguments as List;
+        return CupertinoPageRoute(
+          settings: settings,
+          builder: (BuildContext context) => TermPage(
+            url: args[0] as String,
+            title: args[1] as String,
+          ),
+        );
+
       default:
         return CupertinoPageRoute(
           settings: settings,
@@ -239,5 +257,16 @@ class AppRouter {
 
   static toTapjoyPage() {
     return Navigator.of(context).pushNamed(RouteNames.Tapjoy);
+  }
+
+  static toTermsPage() {
+    return Navigator.of(context).pushNamed(RouteNames.Terms);
+  }
+
+  static toTermPage(String url, String title) {
+    return Navigator.of(context).pushNamed(
+      RouteNames.Term,
+      arguments: [url, title],
+    );
   }
 }
