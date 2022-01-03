@@ -14,6 +14,7 @@ import 'package:revolution/components/buttons/timer.dart';
 import 'package:revolution/components/buttons/ticket.dart';
 import 'package:flutter/material.dart';
 import 'package:revolution/components/buttons/video.dart';
+import 'package:revolution/components/buttons/zoom.dart';
 
 class UIPage extends StatefulWidget {
   UIPage({Key key}) : super(key: key);
@@ -45,6 +46,7 @@ class _UIPageState extends State<UIPage> {
           ChatButton(),
           SlideNoticeButton(),
           AdaptiveColorButton(),
+          ZoomButton(),
           // TODO: number sliding animation with formatting
           // TODO: 토스트 자체 제작
           // TODO: snackbar
