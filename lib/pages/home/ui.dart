@@ -47,6 +47,7 @@ class _UIPageState extends State<UIPage> {
           SlideNoticeButton(),
           AdaptiveColorButton(),
           ZoomButton(),
+          // TODO: flip animation card
           // TODO: number sliding animation with formatting
           // TODO: 토스트 자체 제작
           // TODO: snackbar
@@ -55,7 +56,9 @@ class _UIPageState extends State<UIPage> {
           // TODO: 공룡알 누르면 랜덤 당첨금 나오는 뽑기
           // TODO: text style custom
           // TODO: 로고 매니저
-          // TODO: widget
+          // TODO: 3D
+          // TODO: home widget
+          // TODO: 양면이 다른 이미지를 보여주는 회전하는 카드
         ],
       ),
     );
