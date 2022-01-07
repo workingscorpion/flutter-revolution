@@ -1,10 +1,10 @@
 import 'dart:ui';
 
 import 'package:flutter/material.dart';
+import 'package:flutter_vibrate/flutter_vibrate.dart';
 import 'package:revolution/appRouter.dart';
 import 'package:revolution/constants/customColors.dart';
 import 'package:revolution/utils/bioAuthManager.dart';
-import 'package:vibration/vibration.dart';
 
 class BlurPin extends StatefulWidget {
   BlurPin({Key key}) : super(key: key);
@@ -43,8 +43,9 @@ class _BlurPinState extends State<BlurPin> {
       if (password == answer) {
         AppRouter.pop();
       } else {
-        if (await Vibration.hasVibrator()) {
-          Vibration.vibrate();
+        bool canVibrate = await Vibrate.canVibrate;
+        if (canVibrate) {
+          Vibrate.vibrate();
         }
         shake();
         clear();
