@@ -28,6 +28,9 @@ class _FunctionPageState extends State<FunctionPage> {
           // TODO: hive DB
           // TODO: card scanner => https://pub.dev/packages/card_scanner
           // TODO: heat map analytics => https://pub.dev/packages/round_spot
+          // TODO: appsfly
+          // TODO: KYC
+          // TODO: OTP
         ],
       ),
     );
