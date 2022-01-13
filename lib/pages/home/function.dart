@@ -26,6 +26,8 @@ class _FunctionPageState extends State<FunctionPage> {
           // TODO: textFormmating
           // TODO: moor DB
           // TODO: hive DB
+          // TODO: card scanner => https://pub.dev/packages/card_scanner
+          // TODO: heat map analytics => https://pub.dev/packages/round_spot
         ],
       ),
     );
