@@ -24,6 +24,8 @@ class _FunctionPageState extends State<FunctionPage> {
           TapjoyButton(),
           TermButton(),
           // TODO: textFormmating
+          // TODO: moor DB
+          // TODO: hive DB
         ],
       ),
     );
