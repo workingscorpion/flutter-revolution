@@ -47,6 +47,7 @@ class _UIPageState extends State<UIPage> {
           SlideNoticeButton(),
           AdaptiveColorButton(),
           ZoomButton(),
+          // TODO: page routing(클릭위치에서부터 확산, 가운데에서 들여다보는거처럼 이동 등등)
           // TODO: flip animation card
           // TODO: number sliding animation with formatting
           // TODO: 토스트 자체 제작
