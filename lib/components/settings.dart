@@ -6,11 +6,16 @@ import 'package:revolution/constants/customColors.dart';
 import 'package:revolution/constants/routeNames.dart';
 import 'package:revolution/model/settingModel.dart';
 
-class Settings extends StatelessWidget {
-  const Settings({this.settings});
+class Settings extends StatefulWidget {
+  Settings({this.settings});
 
   final SettingGroupModel settings;
 
+  @override
+  _SettingsState createState() => _SettingsState();
+}
+
+class _SettingsState extends State<Settings> {
   route(String routeName) {
     switch (routeName) {
       case RouteNames.Auth:
@@ -49,30 +54,32 @@ class Settings extends StatelessWidget {
               child: Row(
                 children: [
                   Text(
-                    settings.title,
+                    widget.settings.title,
                     style: TextStyle(
                       fontSize: 18,
                       fontWeight: FontWeight.bold,
                     ),
                   ),
-                  settings.asset != null
-                      ? SvgPicture.asset(settings.asset)
+                  widget.settings.asset != null
+                      ? SvgPicture.asset(widget.settings.asset)
                       : Container(),
                 ],
               ),
             ),
           ],
-          settings.settings
+          widget.settings.settings
               .asMap()
               .map((index, e) => MapEntry(index, setting(e, index)))
               .values,
           [
-            settings.subTexts != null && settings.subTexts.length > 0
+            widget.settings.subTexts != null &&
+                    widget.settings.subTexts.length > 0
                 ? Container(
                     margin: EdgeInsets.only(top: 10),
                     child: Column(
                       crossAxisAlignment: CrossAxisAlignment.stretch,
-                      children: settings.subTexts.map((e) => Text(e)).toList(),
+                      children:
+                          widget.settings.subTexts.map((e) => Text(e)).toList(),
                     ),
                   )
                 : Container(),
@@ -84,7 +91,7 @@ class Settings extends StatelessWidget {
 
   Widget setting(SettingModel e, int index) => Container(
         margin: EdgeInsets.only(
-          bottom: settings.settings.length - 1 <= index ? 0 : 10,
+          bottom: widget.settings.settings.length - 1 <= index ? 0 : 10,
         ),
         child: GestureDetector(
           onTap: () => route(e.routeName),
@@ -104,12 +111,8 @@ class Settings extends StatelessWidget {
                       child: CupertinoSwitch(
                         value: e.agree,
                         onChanged: (value) {
-                          // TODO: setstate
-                          print('value');
-                          print(value);
                           e.agree = value;
-                          print('e.agree');
-                          print(e.agree);
+                          setState(() {});
                         },
                         activeColor: CustomColors.mainColor,
                       ),
