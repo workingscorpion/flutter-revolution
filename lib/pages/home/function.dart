@@ -3,6 +3,9 @@ import 'package:flutter/material.dart';
 import 'package:revolution/components/buttons/infiniteScroll.dart';
 import 'package:revolution/components/buttons/tapjoy.dart';
 import 'package:revolution/components/buttons/term.dart';
+import 'package:revolution/components/buttons/qr.dart';
+import 'package:revolution/components/buttons/qrscan.dart';
+import 'package:sticky_headers/sticky_headers.dart';
 
 class FunctionPage extends StatefulWidget {
   FunctionPage({Key key}) : super(key: key);
@@ -31,6 +34,8 @@ class _FunctionPageState extends State<FunctionPage> {
           // TODO: appsfly
           // TODO: KYC
           // TODO: OTP
+                QRButton(),
+                QRScanButton(),
         ],
       ),
     );

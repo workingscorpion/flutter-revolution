@@ -31,4 +31,7 @@ class RouteNames {
   static const String Tapjoy = '/tapjoy';
   static const String Terms = '/terms';
   static const String Term = '/term';
+  static const String QR = '/qr';
+  static const String QRScan = '/qr/scan';
+  static const String ScanCamera = '/qr/scan/camera';
 }
