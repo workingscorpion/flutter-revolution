@@ -25,15 +25,15 @@ class _ScanCameraPageState extends State<ScanCameraPage> {
     super.dispose();
   }
 
-  @override
-  void reassemble() {
-    super.reassemble();
-    if (Platform.isAndroid) {
-      controller.pauseCamera();
-    } else if (Platform.isIOS) {
-      controller.resumeCamera();
-    }
-  }
+  // @override
+  // void reassemble() {
+  //   super.reassemble();
+  //   if (Platform.isAndroid) {
+  //     controller.pauseCamera();
+  //   } else if (Platform.isIOS) {
+  //     controller.resumeCamera();
+  //   }
+  // }
 
   @override
   Widget build(BuildContext context) {
@@ -65,6 +65,7 @@ class _ScanCameraPageState extends State<ScanCameraPage> {
   void _onQRViewCreated(QRViewController controller) {
     this.controller = controller;
     controller.scannedDataStream.listen((scanData) async {
+      print('listen');
       controller.pauseCamera();
       await KeyValueStore.instance.setScanData(scanData.code);
       AppRouter.pop();
