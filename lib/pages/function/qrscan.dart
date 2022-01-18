@@ -1,7 +1,9 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_mobx/flutter_mobx.dart';
 import 'package:revolution/appRouter.dart';
 import 'package:revolution/components/customBox.dart';
 import 'package:revolution/components/qr.dart';
+import 'package:revolution/store/keyValueStore.dart';
 
 class QRScanPage extends StatefulWidget {
   QRScanPage({Key key}) : super(key: key);
@@ -12,10 +14,8 @@ class QRScanPage extends StatefulWidget {
 
 class _QRScanPageState extends State<QRScanPage> {
   TextEditingController controller = TextEditingController();
-  String data = "";
 
   submit() {
-    data = controller.text;
     controller.clear();
   }
 
@@ -37,7 +37,11 @@ class _QRScanPageState extends State<QRScanPage> {
               ),
             ),
             Container(
-              child: Text(data),
+              child: Observer(
+                builder: (context) => Text(
+                  KeyValueStore.instance.scanData ?? "",
+                ),
+              ),
             )
           ],
         ),
@@ -46,8 +50,6 @@ class _QRScanPageState extends State<QRScanPage> {
   }
 
   scan() async {
-    final String result = await AppRouter.toScanCameraPage();
-    data = result;
-    setState(() {});
+    await AppRouter.toScanCameraPage();
   }
 }

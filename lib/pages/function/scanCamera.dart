@@ -5,6 +5,7 @@ import 'package:qr_code_scanner/qr_code_scanner.dart';
 import 'package:revolution/appRouter.dart';
 import 'package:revolution/components/customBox.dart';
 import 'package:revolution/components/qr.dart';
+import 'package:revolution/store/keyValueStore.dart';
 
 class ScanCameraPage extends StatefulWidget {
   ScanCameraPage();
@@ -63,9 +64,10 @@ class _ScanCameraPageState extends State<ScanCameraPage> {
 
   void _onQRViewCreated(QRViewController controller) {
     this.controller = controller;
-    controller.scannedDataStream.listen((scanData) {
+    controller.scannedDataStream.listen((scanData) async {
       controller.pauseCamera();
-      AppRouter.valuePop(scanData.code);
+      await KeyValueStore.instance.setScanData(scanData.code);
+      AppRouter.pop();
     });
   }
 }

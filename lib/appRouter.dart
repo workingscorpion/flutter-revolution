@@ -107,7 +107,7 @@ class AppRouter {
   }
 
   static valuePop(String value) {
-    return Navigator.of(context).pop(value);
+    return Navigator.of(context).pop<String>(value);
   }
 
   static toHomePage() {
